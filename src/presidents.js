@@ -466,15 +466,15 @@ function getAffiliatedPresidents(presidentsArr) {
 // Iteration 5: Count Years in Office - `reduce()`
 function countYearsInOffice(presidentsArr) {
   // return presidentsArr.reduce((acc, curr) => {
-  //   console.log(acc, curr.leftOffice);
   //   if (curr.leftOffice) {
-  //     return acc.leftOffice + curr.leftOffice
+  //     return acc + curr.leftOffice - curr.tookOffice
   //   }
+  //   return acc
   // }, 0)
   return presidentsArr.reduce((acc, curr) => curr.leftOffice ? acc + curr.leftOffice - curr.tookOffice : acc, 0)
 }
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 
 
@@ -514,7 +514,7 @@ function getAgeAtInauguration(presidentsArr) {
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
   return presidentsArr.filter(president => president.birthYear > year)
- }
+}
 
 // console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
 
@@ -522,7 +522,7 @@ function getPresidentsBornAfter(presidentsArr, year) {
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) { 
+function sortPresidentsByName(presidentsArr) {
   return presidentsArr.sort((a, b) => a.name.localeCompare(b.name))
 }
 
