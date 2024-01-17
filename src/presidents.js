@@ -418,10 +418,14 @@ const presidents = [
 // Iteration 1: Names of Presidents - `map()`
 // It goes through each president in the input array
 // For each president, it takes only the 'name' property and puts it into a new array
-function getNames(presidentsArr) {
-  const presidents = presidentsArr.map((presidents) => presidents.name);
-  return presidents;
-}
+
+// const getNames = presidentsArr => {
+//   const presidents = presidentsArr.map((presidents) => presidents.name);
+//   return presidents;
+// };
+
+const getNames = (presidentsArr) =>
+  presidentsArr.map((presidents) => presidents.name);
 
 // console.log(getNames(presidents));
 
@@ -435,6 +439,11 @@ function getNamesAndParty(presidentsArr) {
   }));
   return namesAndParty;
 }
+
+function getNamesAndParty(presidentsArr) {
+  return presidentsArr.map(({ name, party }) => ({ name, party }));
+}
+
 // Call the function with the provided presidents array
 // const namesAndPartyArray = getNamesAndParty(presidents);
 
@@ -502,7 +511,9 @@ function sortPresidentsByBirthYear(presidentsArr) {
 }
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+const getAgeAtInauguration = (presidentsArr) =>
+  presidentsArr.map((president) => ({...president, ageAtInauguration: president.tookOffice - president.birthYear,
+  }));
 
 // console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
