@@ -500,7 +500,6 @@ function getAgeAtInauguration(presidentsArr) {
       ageAtInauguration: age,
     };
   });
-  console.log(inaugurationArray);
   return inaugurationArray;
 }
 // console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
@@ -522,4 +521,3 @@ function sortPresidentsByName(presidentsArr) {
   });
   return byName;
 }
-console.log(JSON.stringify(sortPresidentsByName(presidents)));
