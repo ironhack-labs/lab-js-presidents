@@ -532,7 +532,7 @@ function getAgeAtInauguration(presidentsArr) {
   const inaugurationAge = [];
 
   const getAge = (arrObj) => {
-    inaugurationAge.push({name: `${arrObj.name}`, AgeAtInauguration: `${arrObj.tookOffice-arrObj.birthYear}`})
+    inaugurationAge.push({name: `${arrObj.name}`, ageAtInauguration: `${arrObj.tookOffice-arrObj.birthYear}`})
   }
 
   presidentsArr.map(getAge);
