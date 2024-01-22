@@ -419,39 +419,89 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
 
-// console.log("getNames(presidents)", getNames(presidents));
+  const presidentNames = [];
+
+  const getName = (arrObj) => {
+    presidentNames.push(arrObj.name)
+  }
+
+  presidentsArr.map(getName);
+
+  return presidentNames;
+
+}
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+  const namesAndPartiesArr = [];
 
+  const getNameAndParty = (arrObj) => {
+    namesAndPartiesArr.push(
+      {
+        name:`${arrObj.name}`,
+        party:`${arrObj.party}`
+      })
+  }
+
+  presidentsArr.map(getNameAndParty);
+
+  return namesAndPartiesArr;
+}
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+  const democraticPresidents = presidentsArr.filter((president) => {
+    return president.party === `Democratic`;
+  }); 
+
+  return democraticPresidents;
+}
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
+  const affiliatedPresidents = presidentsArr.filter((president) => {
+    return president.party;
+  }); 
+
+  return affiliatedPresidents;
+
+}
 
 
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+
+const yearsInOffice = presidentsArr.reduce((accumulator, president) => {
+
+  if (president.leftOffice !== null) {
+
+    accumulator += president.leftOffice - president.tookOffice;
+
+  }
+
+  return accumulator;
+
+},0);
+
+console.log(yearsInOffice);
+return yearsInOffice;
+
+}
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
