@@ -503,29 +503,45 @@ return yearsInOffice;
 
 }
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-
-
-
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicans = presidentsArr.reduce((count, president) => {
+    if (president.party === `Republican` ) {
+      count++;
+    }
+    return count;
 
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
-
+  },0);
+  return republicans;
+}
 
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a,b) => a.birthYear-b.birthYear);
+}
 
 
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+  const inaugurationAge = [];
+
+  const getAge = (arrObj) => {
+    inaugurationAge.push({name: `${arrObj.name}`, AgeAtInauguration: `${arrObj.tookOffice-arrObj.birthYear}`})
+  }
+
+  presidentsArr.map(getAge);
+
+  return inaugurationAge;
+
+}
+
+console.log("ageAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 
 
