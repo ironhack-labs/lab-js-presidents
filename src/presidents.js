@@ -475,11 +475,6 @@ function sortPresidentsByBirthYear(presidentsArr) {
 
 // console.log(sortPresidentsByBirthYear(presidents))
 
-// BONUS: Iteration 8 | Age At Inauguration - `map()`
-// function getAgeAtInauguration(presidentsArr) {
-//  return presidentsArr.map((president)=>({...president, ageAtInauguration: president.tookOffice - president.birthYear}) )
-// }
-
 function getAgeAtInauguration(presidentsArr) {
   return presidentsArr.map((president) => {
     president.ageAtInauguration = president.tookOffice - president.birthYear;
