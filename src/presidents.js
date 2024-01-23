@@ -515,7 +515,7 @@ function sortPresidentsByBirthYear(presidentsArr) {
 function getAgeAtInauguration(presidentsArr) {
   const ageInauguration =  presidentsArr.map(president => ({ 
     ... president, 
-    ageAtInauguration: presidents.tookOffice - presidents.birthYear 
+    ageAtInauguration: presidents.birthYear - presidents.tookOffice
   }));
     return ageInauguration;
   
