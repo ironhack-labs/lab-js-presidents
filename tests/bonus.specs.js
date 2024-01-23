@@ -1,4 +1,4 @@
-xdescribe("BONUS", () => {
+describe("BONUS", () => {
   // Bonus: Iteration 8 | Age of Presidents in the Office - `map()`
   describe("getAgeAtInauguration()", () => {
     it("should take 1 argument (presidents)", () => {
@@ -102,7 +102,7 @@ xdescribe("BONUS", () => {
   });
 
   // Bonus: Iteration 9 | Presidents Born After - `filter()`
-  describe("getPresidentsBornAfte()", () => {
+  describe("getPresidentsBornAfter()", () => {
     it("should take 2 arguments (presidents, year)", () => {
       expect(getPresidentsBornAfter).toBeDefined();
       expect(getPresidentsBornAfter.length).toEqual(2);
