@@ -417,63 +417,110 @@ const presidents = [
 
 
 
-
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const presidentName = presidentsArr.map(president => {
+    return president.name
+  });
+  return presidentName;
+}
 
-// console.log("getNames(presidents)", getNames(presidents));
-
+console.log(getNames(presidents));
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  const namesAndParty = presidentsArr.map((president) => {
+    const { name, party } = president;
+    return { name, party }
+  })
+  return namesAndParty;
+}
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+
+console.log(getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticParty = presidentsArr.filter(president => {
+    return president.party === "Democratic";
+  })
+  return democraticParty;
+}
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+console.log(getDemocraticPresidents(presidents));
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  const noParty = presidentsArr.filter(president => {
+    return president.party !== null;
+  })
+  return noParty;
+}
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
+//console.log(getAffiliatedPresidents(presidents));
 
 
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce((years, president) => {
+    if (president.leftOffice === null) {
+      return years;
+    }
+    return years + (president.leftOffice - president.tookOffice);
+  }, 0)
+  return totalYears;
+}
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+console.log(countYearsInOffice(presidents));
 
 
-
-
+/*const republicans = presidentsArr.filter(president => {
+  return president.party == "Republican"
+})
+const totalPresidents = republicans.length;
+return totalPresidents;
+*/
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicans = presidentsArr.reduce((sum, num) => {
+    if (num.party === "Republican") {
+      sum++
+    }
+    return sum;
+  }, 0)
+  return republicans;
+}
 
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
+console.log(countRepublicanPresidents(presidents))
 
 
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const sortedPresidents = presidentsArr.sort((year, president) => {
+    return year.birthYear - president.birthYear;
+  })
+  return sortedPresidents;
+}
+
+console.log(sortPresidentsByBirthYear(presidents));
 
 
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) { }
 
 // console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
@@ -481,7 +528,7 @@ function getAgeAtInauguration(presidentsArr) {}
 
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) { }
 
 // console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
 
@@ -489,5 +536,6 @@ function getPresidentsBornAfter(presidentsArr, year) {}
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+}
 
