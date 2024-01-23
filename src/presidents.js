@@ -486,8 +486,8 @@ function countYearsInOffice(presidentsArr) {
     if (eachPresident.leftOffice !== null) {
       acc += eachPresident.leftOffice - eachPresident.tookOffice
     }
-    return acc;
-  }, 0);
+    return acc
+  }, 0)
 
   return totalYearsInOffice
 }
@@ -507,8 +507,8 @@ function countRepublicanPresidents(presidentsArr) {
     if (eachPresident.party === "Republican") {
       acc += 1
     }
-    return acc;
-  }, 0);
+    return acc
+  }, 0)
 
   return republicanCount
 }
@@ -523,8 +523,7 @@ function sortPresidentsByBirthYear(presidentsArr) {
   const birthYearInOrder = presidentsArr.sort((acc, eachPresident) => {
     acc -= presidentsArr.birthYear
   })
-
-
+  //Lo dejo a medias porque se supone que no funciona
 }
 
 
