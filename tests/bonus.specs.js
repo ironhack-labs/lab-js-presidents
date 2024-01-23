@@ -157,7 +157,6 @@ xdescribe("BONUS", () => {
     });
   });
 
-
   // Bonus: Iteration 10: Sort Presidents by Name - `sort()`
   describe("sortPresidentsByName()", () => {
     it("should take 1 argument (presidents)", () => {
@@ -203,13 +202,13 @@ xdescribe("BONUS", () => {
         { name: "George H. W. Bush" },
         { name: "Bill Clinton" },
         { name: "Barack Obama" },
-        { name: "Andrew Jackson"},
+        { name: "Andrew Jackson" },
       ];
 
       const result = sortPresidentsByName(testPresidents);
 
       expect(result).toEqual([
-        { name: "Andrew Jackson"},
+        { name: "Andrew Jackson" },
         { name: "Barack Obama" },
         { name: "Bill Clinton" },
         { name: "George H. W. Bush" },
