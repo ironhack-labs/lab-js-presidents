@@ -506,15 +506,25 @@ console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(p
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
+const result = sortPresidentsByBirthYear(presidents)
 
+console.log(result)
 
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const newArr = presidentsArr.map(function(element) {
+    element.ageAtInauguration = element.tookOffice - element.birthYear;
+    return element;
+  })
+  return newArr;
+}
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+console.log("getAgeAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 
 
