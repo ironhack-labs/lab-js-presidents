@@ -511,13 +511,23 @@ function sortPresidentsByBirthYear(presidentsArr) {
   return result
 }
 
-
-//console.log("sortPresidentsByBirthYear(presidents)", sortPresidentsByBirthYear(presidents));
+console.log("sortPresidentsByBirthYear(presidents)", sortPresidentsByBirthYear(presidents));
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const presidentAge = presidentsArr.map(function(president) {
+    const ageAtInauguration = president.tookOffice - president.birthYear;
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+    return {
+      ageAtInauguration: ageAtInauguration
+    };
+  });
+
+  return presidentAge;
+}
+
+
+console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
 
 
