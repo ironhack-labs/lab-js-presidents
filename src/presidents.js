@@ -445,16 +445,32 @@ console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents))
 
 // Iteration 3: Democratic presidents - `filter()`
 function getDemocraticPresidents(presidentsArr) {
-  
+  const democraticPresidents = presidentsArr.filter(function(element) {
+    if (element.party === "Democratic") {
+      return true;
+    } else {
+      return false
+    }
+  })
+  return democraticPresidents;
 }
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
-
+console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents))
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  const affiliatedPresidents = presidentsArr.filter(function(element) {
+    if (element.party === null) {
+      return false;
+    } else {
+      return true
+    }
+  })
+  return affiliatedPresidents;
+}
 
 // console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
