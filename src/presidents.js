@@ -490,15 +490,17 @@ console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 // Iteration 6: Count Republican Presidents - `reduce()`
 function countRepublicanPresidents(presidentsArr) {
-  const republicanPresidents = presidentsArr.reduce(function(acc, curr) {
-    console.log(acc)
-    if (curr.party === "Republican") {
-      return acc + 1;
+  const republicanPresidents = presidents.reduce(function (accumulator, currentValue) {
+    if (currentValue.party == "Republican") {
+      return accumulator + 1;
+    } else {
+      return accumulator;
     }
-  }, 0)
+  }, 0);
+return republicanPresidents;
 }
 
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
+console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
 
 
