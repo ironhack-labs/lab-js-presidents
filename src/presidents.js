@@ -546,6 +546,10 @@ console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(preside
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {
-  
+  const sortedPresidents = presidentsArr.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  })
+  return sortedPresidents;
 }
 
+console.log("Bonus 10 ", sortPresidentsByBirthYear(presidents))
