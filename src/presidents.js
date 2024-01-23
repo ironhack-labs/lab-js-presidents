@@ -504,17 +504,48 @@ function sortPresidentsByBirthYear(presidentsArr) {
   return sortBirthyear;
 }
 
-console.log(sortPresidentsByBirthYear(presidents));
+// console.log(sortPresidentsByBirthYear(presidents));
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const ageIn = presidentsArr.map(president => {
+    // console.log(president.tookOffice - president.birthYear)
+    // console.log(president.tookOffice)
+    // president.ageAtInauguration = president.tookOffice - president.birthYear
+    return president.ageAtInauguration = president.tookOffice - president.birthYear
+  })
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+  
+
+  // console.log(presidentsArr)
+  return presidentsArr
+}
+
+// console.log("ageAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+
+  const filterForYear = presidentsArr.filter(president => {
+    return president.birthYear > year
+  })
+
+  return filterForYear
+}
 
 // console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+
+  const order = presidentsArr.sort((a, b) =>{
+    console.log(a)
+    return b.name - a.name
+  } );
+  
+  // console.log(sortBirthyear);
+  
+  return order;
+}
+
+console.log("Alphabetical", sortPresidentsByName(presidents));
