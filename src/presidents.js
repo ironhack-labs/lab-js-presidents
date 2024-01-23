@@ -426,8 +426,7 @@ function getNames(presidentsArr) {
   return namesArr;
 }
 
-// console.log("getNames(presidents)", getNames(presidents));
-console.log("getName(presidents)", getNames(presidents))
+console.log("getNames(presidents)", getNames(presidents));
 
 
 // Iteration 2: Name and Party  - `map()`
@@ -438,8 +437,7 @@ function getNamesAndParty(presidentsArr) {
   return namesAndParties;
 }
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
-console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents))
+console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
@@ -455,8 +453,7 @@ function getDemocraticPresidents(presidentsArr) {
   return democraticPresidents;
 }
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
-console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents))
+console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
@@ -472,21 +469,34 @@ function getAffiliatedPresidents(presidentsArr) {
   return affiliatedPresidents;
 }
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
-
+console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce(function(acc, curr) { 
+    if (curr.leftOffice === null) {
+      return acc;
+    }
+    return acc + (curr.leftOffice - curr.tookOffice)
+  }, 0)
+  return totalYears;
+}
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-
+console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicanPresidents = presidentsArr.reduce(function(acc, curr) {
+    console.log(acc)
+    if (curr.party === "Republican") {
+      return acc + 1;
+    }
+  }, 0)
+}
 
 // console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
