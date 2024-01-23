@@ -527,19 +527,35 @@ function getAgeAtInauguration(presidentsArr) {
 }
 
 
-console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+console.log("ageAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 
 
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  const bornAfter = presidentsArr.filter(president => president.birthYear > year);
+  return bornAfter
+}
 
-// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
+console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents, 1870));
 
 
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  const nameOrder = presidentsArr.sort(function(a,b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    else if (a.name > b.name) {
+      return 1;
+    } else {
+      return 0
+    }
+  });
+  return nameOrder
+}
 
+console.log("sortPresidentsByName(presidentsArr)", sortPresidentsByName(presidents))
