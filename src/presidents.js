@@ -538,8 +538,7 @@ console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
-  const presidentsBornAfter = presidentsArr.filter(president => president.birthYear > 1945);
-  return presidentsBornAfter;
+  return presidentsArr.filter(president => president.birthYear > year);
 }
 
 console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
