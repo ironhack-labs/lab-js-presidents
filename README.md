@@ -9,21 +9,21 @@
    <h2>Learning Goals</h2>
   </summary>
 
- This exercise allows you to practice and apply the concepts and techniques taught in class. 
+This exercise allows you to practice and apply the concepts and techniques taught in class.
 
-  Upon completion of this exercise, you will be able to:
+Upon completion of this exercise, you will be able to:
 
-  - Run predefined tests in Jasmine to verify that the program meets the technical requirements.
-  - Declare functions using the function expression and arrow function syntax.
-  - Pass functions as arguments to other functions (callbacks).
-  - Pass arrays and objects to functions as arguments.
-  - Manipulate arrays using the `map()`  method.
-  - Filter array elements using the `filter()`  method.
-  - Reduce array values using the `reduce()`  method.
-  - Sort arrays using the `sort()`  method.
+- Run predefined tests in Jasmine to verify that the program meets the technical requirements.
+- Declare functions using the function expression and arrow function syntax.
+- Pass functions as arguments to other functions (callbacks).
+- Pass arrays and objects to functions as arguments.
+- Manipulate arrays using the `map()` method.
+- Filter array elements using the `filter()` method.
+- Reduce array values using the `reduce()` method.
+- Sort arrays using the `sort()` method.
 
   <br>
-  <hr> 
+  <hr>
 
 </details>
 
@@ -31,7 +31,6 @@
 
 Now that we've covered JavaScript array methods let's put them to use!
 In this lab, we'll explore a dataset of US presidents with information about their terms in office. We'll use the array methods `map()`, `filter`, `reduce()`, and `sort()` to iterate over the array and format, filter, and sort the data.
-
 
 <br>
 
@@ -56,8 +55,6 @@ git push origin master
 
 <br>
 
-
-
 ## Test Your Code
 
 This LAB is equipped with unit tests to provide automated feedback on your lab progress. If you want to check the tests, they are in the `tests/presidents.spec.js` file.
@@ -75,6 +72,7 @@ You will work in the `src/presidents.js` file. The file already includes the arr
 <br>
 
 The `presidents` array contains an object for each president with the following properties:
+
 ```js
   {
     id: 44,
@@ -99,7 +97,6 @@ In case you need a refresher on any of the array methods, you can check the [FAQ
 
 <br>
 
-
 ### Iteration 1: Names of All Presidents - `map()`
 
 We will start our practice of JS array methods by working with the `map()` method.
@@ -109,7 +106,7 @@ returned from the provided callback function for every element in the array. The
 
 <br>
 
-Implement the function `getNames()` that takes the **presidents array** as an argument. The function should **return a new array of strings containing only the names** of presidents. 
+Implement the function `getNames()` that takes the **presidents array** as an argument. The function should **return a new array of strings containing only the names** of presidents.
 
 You must use the `map()` method in your implementation to create the new array.
 
@@ -118,10 +115,11 @@ You must use the `map()` method in your implementation to create the new array.
 **Example:**
 
 ```js
-console.log( getNames(presidents) );
+console.log(getNames(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
   "George Washington",
@@ -149,10 +147,11 @@ The function must use the `map()` method to create the new array.
 **Example:**
 
 ```js
-console.log( getNamesAndParty(presidents) );
+console.log(getNamesAndParty(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
   { name: "George Washington", party: "No Party" },
@@ -165,7 +164,7 @@ console.log( getNamesAndParty(presidents) );
 
 <br>
 
-### Iteration 3:  Democratic Presidents - `filter()`
+### Iteration 3: Democratic Presidents - `filter()`
 
 Next up, we will practice using the `filter()` method.
 The `filter()` method creates a new array containing the elements for which the callback function returns `true`. In other words, the `filter()` method creates a new array containing only the elements that pass the test implemented by the callback function.
@@ -181,15 +180,16 @@ The presidents who belonged to the Democratic party have the `party` property se
 **Example:**
 
 ```js
-console.log( getDemocraticPresidents(presidents) );
+console.log(getDemocraticPresidents(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
-  { id: 7, name: "Andrew Jackson",  /*  ...  */ party: "Democratic" },
+  { id: 7, name: "Andrew Jackson", /*  ...  */ party: "Democratic" },
   { id: 8, name: "Martin Van Buren", /*  ...  */ party: "Democratic" },
-  { id: 11, name: "James K. Polk", /*  ...  */  party: "Democratic" },
+  { id: 11, name: "James K. Polk", /*  ...  */ party: "Democratic" },
   // ...
   // ...
 ];
@@ -197,7 +197,7 @@ console.log( getDemocraticPresidents(presidents) );
 
 <br>
 
-### Iteration 4:  Affiliated Presidents - `filter()`
+### Iteration 4: Affiliated Presidents - `filter()`
 
 Moving on to the next iteration, we will continue practicing with the `filter()` method.
 
@@ -207,20 +207,24 @@ In other words the function should use the `filter()` method to filter out the p
 
 Hint: The presidents who were are not affiliated with any party have the `party` property set to `null`.
 
-
 <br>
 
 **Example:**
 
 ```js
-console.log( getAffiliatedPresidents(presidents) );
+console.log(getAffiliatedPresidents(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
   { id: 2, name: "John Quincy Adams", /*  ...  */ party: "Federalist" },
-  { id: 3, name: "Thomas Jefferson", /*  ...  */ party: "Democratic-Republican" },
+  {
+    id: 3,
+    name: "Thomas Jefferson",
+    /*  ...  */ party: "Democratic-Republican",
+  },
   { id: 4, name: "James Madison", /*  ...  */ party: "Democratic-Republican" },
   // ...
   // ...
@@ -248,12 +252,13 @@ The function should use the `reduce()` method to count the total years that all 
 **Example:**
 
 ```js
-console.log( countYearsInOffice(presidents) );
+console.log(countYearsInOffice(presidents));
 ```
 
 **Expected Output:**
+
 ```js
-232
+232;
 ```
 
 <br>
@@ -269,23 +274,23 @@ The presidents who belonged to the Republican party have the `party` property se
 **Example:**
 
 ```js
-console.log( countRepublicanPresidents(presidents) );
+console.log(countRepublicanPresidents(presidents));
 ```
 
 **Expected Output:**
+
 ```js
-19
+19;
 ```
 
 <br>
 
-### Iteration 7:  Sort Presidents by Birth Year - `sort()`
+### Iteration 7: Sort Presidents by Birth Year - `sort()`
 
 For the final few mandatory iterations, we will practice using the `sort()` method.
 
 The `sort()` method is used to sort the elements of an array in place. This means the original array is mutated, and the sorted elements are rearranged within the same array.
-To sort an array, we need to pass a *compare function* to the `sort()` method with the conditional logic that returns `-1`, `1`, or `0` and specifies how to sort the elements.
-
+To sort an array, we need to pass a _compare function_ to the `sort()` method with the conditional logic that returns `-1`, `1`, or `0` and specifies how to sort the elements.
 
 <br>
 
@@ -296,10 +301,11 @@ Implement the function `sortPresidentsByBirthYear()` that takes the **presidents
 **Example:**
 
 ```js
-console.log( sortPresidentsByBirthYear(presidents) );
+console.log(sortPresidentsByBirthYear(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
   { id: 1, name: "George Washington", /*  ...  */ birthYear: 1732 },
@@ -320,15 +326,17 @@ You are doing great! Let's move on to the bonus iterations. :rocket:
 
 Before you start working on the bonus iterations, you will need to enable the tests for the bonus iterations. You may have noticed that the test results for the bonus iterations are gray. This is because we disabled them intentionally to avoid overwhelming you with too many tests.
 
-The tests are located in the file `tests/bonus.specs.js`. To enable the tests, remove the `x` from the first  `xdescribe()` block, like this:
+The tests are located in the file `tests/bonus.specs.js`. To enable the tests, remove the `x` from the first `xdescribe()` block, like this:
 
 **Before:**
+
 ```js
 xdescribe("BONUS", () => {
   // ...
 ```
 
 **After:**
+
 ```js
 describe("BONUS", () => {
   // ...
@@ -346,10 +354,11 @@ The function should use the `map()` method to create a new array of updated pres
 **Example:**
 
 ```js
-console.log( getAgeAtInauguration(presidents) );
+console.log(getAgeAtInauguration(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
   { id: 1, name: "George Washington", /*  ...  */ ageAtInauguration: 57 },
@@ -359,7 +368,6 @@ console.log( getAgeAtInauguration(presidents) );
   // ...
 ];
 ```
-
 
 <br>
 
@@ -373,10 +381,11 @@ The function should use the `filter()` method to create a new array containing o
 **Example:**
 
 ```js
-console.log( getPresidentsBornAfter(presidents, 1945) );
+console.log(getPresidentsBornAfter(presidents, 1945));
 ```
 
 **Expected Output:**
+
 ```js
 [
   { id: 42, name: "Bill Clinton", /*  ...  */ birthYear: 1946 },
@@ -398,26 +407,26 @@ The function should use the `sort()` method to **sort the presidents array alpha
 **Example:**
 
 ```js
-console.log( sortPresidentsByName(presidents) );
+console.log(sortPresidentsByName(presidents));
 ```
 
 **Expected Output:**
+
 ```js
 [
-  { id: 16, name: "Abraham Lincoln", /*  ...  */ },
-  { id: 7,  name: "Andrew Jackson",  /*  ...  */ },
-  { id: 17, name: "Andrew Johnson",  /*  ...  */ },
-  { id: 44, name: "Barack Obama",  /*  ...  */ },
-  { id: 23, name: "Benjamin Harrison", /*  ...  */ },
-  { id: 42, name: "Bill Clinton",  /*  ...  */ },
-  { id: 30, name: "Calvin Coolidge",  /*  ...  */ },
+  { id: 16, name: "Abraham Lincoln" /*  ...  */ },
+  { id: 7, name: "Andrew Jackson" /*  ...  */ },
+  { id: 17, name: "Andrew Johnson" /*  ...  */ },
+  { id: 44, name: "Barack Obama" /*  ...  */ },
+  { id: 23, name: "Benjamin Harrison" /*  ...  */ },
+  { id: 42, name: "Bill Clinton" /*  ...  */ },
+  { id: 30, name: "Calvin Coolidge" /*  ...  */ },
   // ...
   // ...
 ];
 ```
 
 <br>
-
 
 **Happy coding!** :blue_heart:
 
@@ -431,16 +440,13 @@ console.log( sortPresidentsByName(presidents) );
   <summary>I am stuck in the exercise and don't know how to solve the problem or where to start.</summary>
   <br>
 
+If you are stuck in your code and don't know how to solve the problem or where to start, you should take a step back and try to form a clear question about the specific issue you are facing. This will help you narrow down the problem and come up with potential solutions.
 
-  If you are stuck in your code and don't know how to solve the problem or where to start, you should take a step back and try to form a clear question about the specific issue you are facing. This will help you narrow down the problem and come up with potential solutions.
+For example, is it a concept you don't understand, or are you receiving an error message you don't know how to fix? It is usually helpful to state the problem as clearly as possible, including any error messages you receive. This can help you communicate the issue to others and potentially get help from classmates or online resources.
 
+Once you have a clear understanding of the problem, you will be able to start working toward the solution.
 
-  For example, is it a concept you don't understand, or are you receiving an error message you don't know how to fix? It is usually helpful to state the problem as clearly as possible, including any error messages you receive. This can help you communicate the issue to others and potentially get help from classmates or online resources. 
-
-
-  Once you have a clear understanding of the problem, you will be able to start working toward the solution.
-
-  [Back to top](#faqs)
+[Back to top](#faqs)
 
 </details>
 
@@ -448,14 +454,13 @@ console.log( sortPresidentsByName(presidents) );
   <summary>All of the Jasmine tests are failing and in red. Why did this happen?</summary>
   <br>
 
+One possible reason why all of the Jasmine tests are failing is that there is a syntax error in the code being tested. If the code contains a syntax error, it will not be loaded properly and none of the tests will be able to run. This will cause all of the tests to fail.
 
-  One possible reason why all of the Jasmine tests are failing is that there is a syntax error in the code being tested. If the code contains a syntax error, it will not be loaded properly and none of the tests will be able to run. This will cause all of the tests to fail.
+To troubleshoot this issue, you will need to examine the code being tested for syntax errors. Look for missing brackets, semicolons, or other syntax issues that could be causing the problem. If you find a syntax error, correct it and try running the tests again.
 
-  To troubleshoot this issue, you will need to examine the code being tested for syntax errors. Look for missing brackets, semicolons, or other syntax issues that could be causing the problem. If you find a syntax error, correct it and try running the tests again.
+Another possibility is that there is an issue with the tests. It is possible that you may have modified the test file and caused an issue. If you have made changes to the test file, try copying and pasting the original test file and running the tests again to see if this resolves the issue.
 
-  Another possibility is that there is an issue with the tests. It is possible that you may have modified the test file and caused an issue. If you have made changes to the test file, try copying and pasting the original test file and running the tests again to see if this resolves the issue.
-
-  [Back to top](#faqs)
+[Back to top](#faqs)
 
 </details>
 
@@ -463,32 +468,31 @@ console.log( sortPresidentsByName(presidents) );
   <summary>How to use the <code>map()</code> array method?</summary>
   <br>
 
-  The `map()` method is used to create a new array by returning a value for each element in an array.
+The `map()` method is used to create a new array by returning a value for each element in an array.
 
-  The `filter()` method takes a callback function as an argument. The `map()` method returns a new array containing the values returned from the callback function.
+The `filter()` method takes a callback function as an argument. The `map()` method returns a new array containing the values returned from the callback function.
 
-  Here is an example of using the `map()` method to extract the `grade` property from each student object in the `students` array and create a new array with the grades:
+Here is an example of using the `map()` method to extract the `grade` property from each student object in the `students` array and create a new array with the grades:
 
-  ```js
-  const students = [
-    { name: "Anna", grade: 8 },
-    { name: "Bill", grade: 9 },
-    { name: "Cloe", grade: 7 }
-  ];
+```js
+const students = [
+  { name: "Anna", grade: 8 },
+  { name: "Bill", grade: 9 },
+  { name: "Cloe", grade: 7 },
+];
 
-  // Use map() to extract the 'grade' from each student object
-  const studentGrades = students.map(function (student) {
-    // Return the value to be included in the new array
-    return student.grade;
-  });
+// Use map() to extract the 'grade' from each student object
+const studentGrades = students.map(function (student) {
+  // Return the value to be included in the new array
+  return student.grade;
+});
 
-
-  console.log(studentGrades); // Output: [8, 9, 7]
-  ```
+console.log(studentGrades); // Output: [8, 9, 7]
+```
 
   <br>
 
-  [Back to top](#faqs)
+[Back to top](#faqs)
 
 </details>
 
@@ -496,41 +500,41 @@ console.log( sortPresidentsByName(presidents) );
   <summary>How to use the <code>filter()</code> array method?</summary>
   <br>
 
-  The `filter()` method is used for iterating through an array and selecting only certain elements to include in a new array.
+The `filter()` method is used for iterating through an array and selecting only certain elements to include in a new array.
 
-  The `filter()` method returns a new array with all elements that pass a certain condition. The `filter()` method takes a callback function as an argument.
+The `filter()` method returns a new array with all elements that pass a certain condition. The `filter()` method takes a callback function as an argument.
 
-  The callback function should return a boolean value (`true` / `false`) or a *truthy*/*falsy* value:
+The callback function should return a boolean value (`true` / `false`) or a _truthy_/_falsy_ value:
 
-  - If the callback function returns `true` for a particular element, that element will be included in the new array.
-  - If the callback function returns `false` for a particular element, that element will be excluded from the new array.
+- If the callback function returns `true` for a particular element, that element will be included in the new array.
+- If the callback function returns `false` for a particular element, that element will be excluded from the new array.
 
-  Here is an example of filtering an array to get a new array containing only students that have a course property of `"Web Dev"`:
+Here is an example of filtering an array to get a new array containing only students that have a course property of `"Web Dev"`:
 
-  ```js
-  const students = [
-    { name: "Anna", course: "Web Dev" },
-    { name: "Bill", course: "UX/UI" },
-    { name: "Cori", course: "Data" },
-    { name: "Dave", course: "Web Dev" },
-    { name: "Erin", course: "UX/UI" }
-  ];
+```js
+const students = [
+  { name: "Anna", course: "Web Dev" },
+  { name: "Bill", course: "UX/UI" },
+  { name: "Cori", course: "Data" },
+  { name: "Dave", course: "Web Dev" },
+  { name: "Erin", course: "UX/UI" },
+];
 
-  const webDevStudents = students.filter( function(el) {
-    return el.course === "Web Dev";
-  });
+const webDevStudents = students.filter(function (el) {
+  return el.course === "Web Dev";
+});
 
-  console.log(webDevStudents);
-  // Output: 
-  // [ 
-  //   {name: "Anna", course: "Web Dev"},
-  //   {name: "Dave", course: "Web Dev"}
-  // ]
-  ```
+console.log(webDevStudents);
+// Output:
+// [
+//   {name: "Anna", course: "Web Dev"},
+//   {name: "Dave", course: "Web Dev"}
+// ]
+```
 
 <br>
 
-  [Back to top](#faqs)
+[Back to top](#faqs)
 
 </details>
 
@@ -538,69 +542,69 @@ console.log( sortPresidentsByName(presidents) );
   <summary>How to use the <code>sort()</code> array method?</summary>
   <br>
 
-  The `sort()` method is used to sort the elements of an array in place. This means the original array is mutated and the sorted elements are rearranged within the same array.
+The `sort()` method is used to sort the elements of an array in place. This means the original array is mutated and the sorted elements are rearranged within the same array.
 
-  The default sort order is based on converting the elements into strings and then comparing their sequences of UTF-16 Unicode values. This means that the `sort()` method can be used directly to sort an array of strings in alphabetical order.  However, when working with numbers, the default sort order may not produce the desired result and it is necessary to provide a sorting function as an argument to the `sort()` method.
+The default sort order is based on converting the elements into strings and then comparing their sequences of UTF-16 Unicode values. This means that the `sort()` method can be used directly to sort an array of strings in alphabetical order. However, when working with numbers, the default sort order may not produce the desired result and it is necessary to provide a sorting function as an argument to the `sort()` method.
 
-  #### Sorting numbers - ascending order
+#### Sorting numbers - ascending order
 
-  Here is an example of using the `sort()` method to sort an array of numbers in ascending order:
+Here is an example of using the `sort()` method to sort an array of numbers in ascending order:
 
-  ```js
-  const numbers = [5, 2, 3, 1, 4];
+```js
+const numbers = [5, 2, 3, 1, 4];
 
-  numbers.sort((a, b) => a - b);
+numbers.sort((a, b) => a - b);
 
-  console.log(numbers); // Output: [1, 2, 3, 4, 5]
-  ```
-
-  <br>
-
-  #### Sorting numbers - ascending order
-
-  Here is an example of using the `sort()` method to sort an array of numbers in descending order:
-
-  ```js
-  const numbers = [5, 2, 3, 1, 4];
-
-  numbers.sort((a, b) => b - a);
-
-  console.log(numbers); // Output: [5, 4, 3, 2, 1]
-  ```
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+```
 
   <br>
 
-  #### Sorting strings - ascending order A-Z
+#### Sorting numbers - ascending order
 
-  Here is an example of using the `sort()` method to sort an array of strings in ascending order (A-Z):
+Here is an example of using the `sort()` method to sort an array of numbers in descending order:
 
-  ```js
-  const words = ["cherry", "apple", "blueberry"];
+```js
+const numbers = [5, 2, 3, 1, 4];
 
-  words.sort((a, b) => a.localeCompare(b));
+numbers.sort((a, b) => b - a);
 
-  console.log(words); // Output: ["apple", "blueberry", "cherry"]
-  ```
-
-  The `localeCompare()` method is used to compare the strings in alphabetical order. In the above example `localeCompare()` method returns a negative value if `a` comes before `b` in the sort order, a positive value if `a` comes after `b`, and 0 if they are equal. This causes the strings to be sorted in ascending order (A-Z).
+console.log(numbers); // Output: [5, 4, 3, 2, 1]
+```
 
   <br>
 
-  #### Sorting strings - descending order Z-A
+#### Sorting strings - ascending order A-Z
 
-  Alternatively, you can use the default sort order by simply calling the `sort()` method without a compare function:
+Here is an example of using the `sort()` method to sort an array of strings in ascending order (A-Z):
 
-  ```js
-  const words = ["cherry", "apple", "blueberry"];
+```js
+const words = ["cherry", "apple", "blueberry"];
 
-  words.sort();
+words.sort((a, b) => a.localeCompare(b));
 
-  console.log(words); // Output: ["apple", "blueberry", "cherry"]
-  ```
+console.log(words); // Output: ["apple", "blueberry", "cherry"]
+```
+
+The `localeCompare()` method is used to compare the strings in alphabetical order. In the above example `localeCompare()` method returns a negative value if `a` comes before `b` in the sort order, a positive value if `a` comes after `b`, and 0 if they are equal. This causes the strings to be sorted in ascending order (A-Z).
 
   <br>
 
-  [Back to top](#faqs)
+#### Sorting strings - descending order Z-A
+
+Alternatively, you can use the default sort order by simply calling the `sort()` method without a compare function:
+
+```js
+const words = ["cherry", "apple", "blueberry"];
+
+words.sort();
+
+console.log(words); // Output: ["apple", "blueberry", "cherry"]
+```
+
+  <br>
+
+[Back to top](#faqs)
 
 </details>
 
@@ -608,55 +612,55 @@ console.log( sortPresidentsByName(presidents) );
   <summary>How to use the <code>reduce()</code> array method?</summary>
   <br>
 
-  The `reduce()` method is used to reduce an array of values to a single value by adding each element to the accumulator.
+The `reduce()` method is used to reduce an array of values to a single value by adding each element to the accumulator.
 
   <br>
 
-  #### Syntax
+#### Syntax
 
-  The `reduce()` method takes two arguments: a *callback function* and the *initial value*.
+The `reduce()` method takes two arguments: a _callback function_ and the _initial value_.
 
-  ```js
-  array.reduce((accumulator, element, index, array) => {}, initialValue);
-  ```
+```js
+array.reduce((accumulator, element, index, array) => {}, initialValue);
+```
 
-  The callback function takes four arguments:
+The callback function takes four arguments:
 
-  - `accumulator`: the accumulated value. The `accumulator` is initialized with the value passed as the second argument: `initialValue`.
-  - `element`: the current element being processed in the array
-  - `index`: *(optional)* the index of the current element being processed in the array
-  - `array`: *(optional)* the original array
-
-  <br>
-
-  #### Example
-
-  Here is an example of using the `reduce()` method to calculate the sum of all `grade` values in an array:
-
-  ```js
-  const students = [
-    { name: "John", grade: 8 },
-    { name: "Jane", grade: 9 },
-    { name: "Bob", grade: 7 }
-  ];
-
-  const gradesTotal = students.reduce((accumulator, element) {
-    // For each array element, add its 'grade' to the accumulator 
-    const newAccumulator = accumulator + element.grade;
-    // Return the new accumulator value for the next iteration
-    return newAccumulator;                              
-  }, 0);
-
-  console.log(gradesTotal); // Output: 24
-  ```
-
-  In the above example, the accumulator was initialized with the initial value of `0`.
-
-  The callback function adds the `grade` of the current element to the accumulator on each iteration. The returned value becomes the new accumulator value for the next iteration. The `reduce()` method returns the final value of the accumulator, which is the sum of all elements in the array.
+- `accumulator`: the accumulated value. The `accumulator` is initialized with the value passed as the second argument: `initialValue`.
+- `element`: the current element being processed in the array
+- `index`: _(optional)_ the index of the current element being processed in the array
+- `array`: _(optional)_ the original array
 
   <br>
 
-  [Back to top](#faqs)
+#### Example
+
+Here is an example of using the `reduce()` method to calculate the sum of all `grade` values in an array:
+
+```js
+const students = [
+  { name: "John", grade: 8 },
+  { name: "Jane", grade: 9 },
+  { name: "Bob", grade: 7 }
+];
+
+const gradesTotal = students.reduce((accumulator, element) {
+  // For each array element, add its 'grade' to the accumulator
+  const newAccumulator = accumulator + element.grade;
+  // Return the new accumulator value for the next iteration
+  return newAccumulator;
+}, 0);
+
+console.log(gradesTotal); // Output: 24
+```
+
+In the above example, the accumulator was initialized with the initial value of `0`.
+
+The callback function adds the `grade` of the current element to the accumulator on each iteration. The returned value becomes the new accumulator value for the next iteration. The `reduce()` method returns the final value of the accumulator, which is the sum of all elements in the array.
+
+  <br>
+
+[Back to top](#faqs)
 
 </details>
 
@@ -664,39 +668,37 @@ console.log( sortPresidentsByName(presidents) );
   <summary>How to use the <code>slice()</code> array method?</summary>
   <br>
 
-  The `slice()` method is used to copy a portion of an array and return it as a new array. The  `slice()` method doesn't mutate the original array.
+The `slice()` method is used to copy a portion of an array and return it as a new array. The `slice()` method doesn't mutate the original array.
 
   <br>
 
-  #### Syntax
+#### Syntax
 
-  ```js
-  const newArray = array.slice(start, end);
-  ```
+```js
+const newArray = array.slice(start, end);
+```
 
-  - `start` is the index at which the slice begins.
-  - `end` is the index at which the slice ends.
-
-  <br>
-
-  The `slice()` method extracts elements from the original array and includes them in the new array up to, but not including, the `end` index. If the `end` index is not provided, the `slice()` method will extract elements from the `start` index to the *end of the original array*.
-
-
-
-  Here is an example of using the `slice()` method to copy array elements:
-
-  ```js
-  const strings = ["a", "b", "c", "d", "e"];
-
-  // Extract elements from index 1 to index 3
-  const slice = strings.slice(1, 3);
-
-  console.log(slice); // Output: ["b", "c"]
-  ```
+- `start` is the index at which the slice begins.
+- `end` is the index at which the slice ends.
 
   <br>
 
-  [Back to top](#faqs)
+The `slice()` method extracts elements from the original array and includes them in the new array up to, but not including, the `end` index. If the `end` index is not provided, the `slice()` method will extract elements from the `start` index to the _end of the original array_.
+
+Here is an example of using the `slice()` method to copy array elements:
+
+```js
+const strings = ["a", "b", "c", "d", "e"];
+
+// Extract elements from index 1 to index 3
+const slice = strings.slice(1, 3);
+
+console.log(slice); // Output: ["b", "c"]
+```
+
+  <br>
+
+[Back to top](#faqs)
 
 </details>
 
@@ -704,23 +706,27 @@ console.log( sortPresidentsByName(presidents) );
   <summary>I am unable to push changes to the repository. What should I do?</summary>
   <br>
 
-There are a couple of possible reasons why you may be unable to *push* changes to a Git repository:
+There are a couple of possible reasons why you may be unable to _push_ changes to a Git repository:
 
 1. **You have not committed your changes:** Before you can push your changes to the repository, you need to commit them using the `git commit` command. Make sure you have committed your changes and try pushing again. To do this, run the following terminal commands from the project folder:
-  ```bash
-  git add .
-  git commit -m "Your commit message"
-  git push
-  ```
-2. **You do not have permission to push to the repository:** If you have cloned the repository directly from the main Ironhack repository without making a *Fork* first, you do not have write access to the repository.
-To check which remote repository you have cloned, run the following terminal command from the project folder:
-  ```bash
-  git remote -v
-  ```
+
+```bash
+git add .
+git commit -m "Your commit message"
+git push
+```
+
+2. **You do not have permission to push to the repository:** If you have cloned the repository directly from the main Ironhack repository without making a _Fork_ first, you do not have write access to the repository.
+   To check which remote repository you have cloned, run the following terminal command from the project folder:
+
+```bash
+git remote -v
+```
+
 If the link shown is the same as the main Ironhack repository, you will need to fork the repository to your GitHub account first and then clone your fork to your local machine to be able to push the changes.
 
 **Note**: You should make a copy of your local code to avoid losing it in the process.
 
-  [Back to top](#faqs)
+[Back to top](#faqs)
 
 </details>
