@@ -419,31 +419,52 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  return presidentsArr.map(eachPresident => {
+    return eachPresident.name
+  })
+  
+}
 
-// console.log("getNames(presidents)", getNames(presidents));
+//console.log("getNames(presidents)", getNames(presidents));
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  return presidentsArr.map(eachPresident => {
+    return {name: eachPresident.name, party: eachPresident.party}
+  })
+}
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+//console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter (eachPresident => {
+    if (eachPresident.party === "Democratic"){
+      return true
+    }
+  })
+}
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+//console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  return presidentsArr.filter (eachPresident => {
+    if (eachPresident.party !== null){
+      return true
+    }
+  })
+}
 
 // console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
@@ -451,7 +472,12 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  return presidentsArr.leftOffice.reduce((accumulador, eachPresident => {
+    return acumulador + eachPresident
+  }, 0
+  ))
+}
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
@@ -459,15 +485,30 @@ function  countYearsInOffice(presidentsArr) {}
 
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  return presidentsArr.reduce((acc, eachPresident) => {
+    if (eachPresident.party === "Republican"){
+      return acc + 1
+    }else {
+      return acc
+    }
+  }, 0
+  )
+}
 
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
+//console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
 
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((elem1, elem2) =>
+    elem1.birthYear - elem2.birthYear
+  )
+  
+}
+
 
 
 
