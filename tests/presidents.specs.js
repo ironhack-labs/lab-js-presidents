@@ -1,5 +1,5 @@
 // Iteration 1 | getNames()
-describe("Function getNames()", () => {  
+describe("Function getNames()", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getNames).toEqual("function");
     expect(getNames.length).toEqual(1);
@@ -18,7 +18,7 @@ describe("Function getNames()", () => {
     getNames(testPresidents);
     expect(mapSpy).toHaveBeenCalled();
     expect(mapSpy).toHaveBeenCalledWith(jasmine.any(Function));
-  });  
+  });
 
   it("should return an array", () => {
     const testPresidents = [
@@ -32,7 +32,6 @@ describe("Function getNames()", () => {
 
     expect(result).toEqual(jasmine.any(Array));
   });
-
 
   it("should return an array of strings with the names of the presidents", () => {
     const testPresidents = [
@@ -50,7 +49,6 @@ describe("Function getNames()", () => {
       "John Quincy Adams",
       "George Washington",
     ]);
-
   });
 });
 
@@ -93,7 +91,12 @@ describe("Function getNamesAndParty()", () => {
     const testPresidents = [
       { name: "John F. Kennedy", party: "Democratic", id: 1, birthYear: 1992 },
       { name: "Ronald Reagan", party: "Republican", id: 2, birthYear: 1998 },
-      { name: "John Quincy Adams", party: "Federalist", id: 3, birthYear: 1940 },
+      {
+        name: "John Quincy Adams",
+        party: "Federalist",
+        id: 3,
+        birthYear: 1940,
+      },
     ];
 
     const result = getNamesAndParty(testPresidents);
@@ -107,7 +110,7 @@ describe("Function getNamesAndParty()", () => {
 });
 
 // Iteration 3 | getDemocraticPresidents()
-describe("Function getDemocraticPresidents()", () => {  
+describe("Function getDemocraticPresidents()", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getDemocraticPresidents).toEqual("function");
     expect(getDemocraticPresidents.length).toEqual(1);
@@ -157,7 +160,6 @@ describe("Function getDemocraticPresidents()", () => {
     ]);
   });
 });
-
 
 // Iteration 4 | getAffiliatedPresidents()
 describe("Function getAffiliatedPresidents()", () => {
@@ -220,25 +222,57 @@ describe("Function countYearsInOffice()", () => {
 
   it("should use the 'reduce()' method to iterate over the presidents array passed as argument", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
     ];
 
     const reduceSpy = spyOn(testPresidents, "reduce").and.returnValue(10);
 
     const result = countYearsInOffice(testPresidents);
     expect(reduceSpy).toHaveBeenCalled();
-    expect(reduceSpy).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Number));
+    expect(reduceSpy).toHaveBeenCalledWith(
+      jasmine.any(Function),
+      jasmine.any(Number)
+    );
     expect(result).toEqual(10);
-    
   });
 
   it("should return a number", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 },
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 },
-      { name: "John Quincy Adams", party: "Federalist", tookOffice: 1797, leftOffice: 1801 },
-      { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 },
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      },
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      },
+      {
+        name: "John Quincy Adams",
+        party: "Federalist",
+        tookOffice: 1797,
+        leftOffice: 1801,
+      },
+      {
+        name: "George Washington",
+        party: null,
+        tookOffice: 1789,
+        leftOffice: 1797,
+      },
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -248,8 +282,18 @@ describe("Function countYearsInOffice()", () => {
 
   it("should return the total years that all the presidents served in office", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -259,10 +303,30 @@ describe("Function countYearsInOffice()", () => {
 
   it("should skip the presidents who are still in office (leftOffice is null)", () => {
     const testPresidents = [
-      { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 }, // 8 years
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
-      { name: "Joseph Biden", party: "Democratic", tookOffice: 2021, leftOffice: null }, // still in office
+      {
+        name: "George Washington",
+        party: null,
+        tookOffice: 1789,
+        leftOffice: 1797,
+      }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
+      {
+        name: "Joseph Biden",
+        party: "Democratic",
+        tookOffice: 2021,
+        leftOffice: null,
+      }, // still in office
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -270,7 +334,6 @@ describe("Function countYearsInOffice()", () => {
     expect(result).toEqual(18);
   });
 });
-
 
 // Iteration 6 | getPresidentsByParty()
 describe("Function countRepublicanPresidents()", () => {
@@ -281,27 +344,75 @@ describe("Function countRepublicanPresidents()", () => {
 
   it("should use the 'reduce()' method to iterate over the presidents array passed as argument", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 },
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 },
-      { name: "John Quincy Adams", party: "Federalist", tookOffice: 1797, leftOffice: 1801 },
-      { name: "George W. Bush", party: "Republican", tookOffice: 2001, leftOffice: 2009 },
-      { name: "Richard Nixon", party: "Republican", tookOffice: 1969, leftOffice: 1974 },
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      },
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      },
+      {
+        name: "John Quincy Adams",
+        party: "Federalist",
+        tookOffice: 1797,
+        leftOffice: 1801,
+      },
+      {
+        name: "George W. Bush",
+        party: "Republican",
+        tookOffice: 2001,
+        leftOffice: 2009,
+      },
+      {
+        name: "Richard Nixon",
+        party: "Republican",
+        tookOffice: 1969,
+        leftOffice: 1974,
+      },
     ];
 
     const reduceSpy = spyOn(testPresidents, "reduce").and.returnValue(3);
 
     const result = countRepublicanPresidents(testPresidents);
     expect(reduceSpy).toHaveBeenCalled();
-    expect(reduceSpy).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Number));
+    expect(reduceSpy).toHaveBeenCalledWith(
+      jasmine.any(Function),
+      jasmine.any(Number)
+    );
     expect(result).toEqual(3);
   });
 
   it("should return a number", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 },
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 },
-      { name: "John Quincy Adams", party: "Federalist", tookOffice: 1797, leftOffice: 1801 },
-      { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 },
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      },
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      },
+      {
+        name: "John Quincy Adams",
+        party: "Federalist",
+        tookOffice: 1797,
+        leftOffice: 1801,
+      },
+      {
+        name: "George Washington",
+        party: null,
+        tookOffice: 1789,
+        leftOffice: 1797,
+      },
     ];
 
     const result = countRepublicanPresidents(testPresidents);
@@ -311,12 +422,12 @@ describe("Function countRepublicanPresidents()", () => {
 
   it("should return the total number of presidents who belonged to the Republican party", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic"},
-      { name: "Ronald Reagan", party: "Republican"},
-      { name: "Ulysses S. Grant", party: "Republican"},
+      { name: "John F. Kennedy", party: "Democratic" },
+      { name: "Ronald Reagan", party: "Republican" },
+      { name: "Ulysses S. Grant", party: "Republican" },
       { name: "George Washington", party: null },
       { name: "Gerald Ford", party: "Republican" },
-      { name: "Richard Nixon", party: "Republican"}
+      { name: "Richard Nixon", party: "Republican" },
     ];
 
     const result = countRepublicanPresidents(testPresidents);
