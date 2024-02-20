@@ -503,10 +503,10 @@ function sortPresidentsByBirthYear(presidentsArr) {
   return sortPresidentsByBirthYearArray;
 }
 
-console.log(
-  "sortPresidentsByBirthYear(presidents)",
-  sortPresidentsByBirthYear(presidents)
-);
+// console.log(
+//   "sortPresidentsByBirthYear(presidents)",
+//   sortPresidentsByBirthYear(presidents)
+// );
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {}
 
