@@ -419,31 +419,63 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
 
-// console.log("getNames(presidents)", getNames(presidents));
+  const presidentNames = presidentsArr.map(presidents => presidents.name);
+  return presidentNames
+}
+
+ //console.log("getNames(presidents)", getNames(presidents));
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+ return presidentsArr.map(presidents => ({
+  name: presidents.name,
+  party: presidents.party || "No Party", 
+
+ }))
+}
+
+//console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+  const presidentParty = presidentsArr.filter((presidentsArr) => {
+   
+    if(presidentsArr.party === "Democratic"){
+      return true
+    }
+  })
+  return presidentParty
+
+}
+
+//console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+
+const presidentsWithParty = presidentsArr.filter((presidentsArr) => {
+
+  if(presidentsArr.party === "Democratic" || presidentsArr.party === "Republican") {
+    return true
+  }
+}) 
+  return presidentsWithParty
+
+
+}
 
 // console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
@@ -451,7 +483,23 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+
+  const totalYearsAsPresident = presidentsArr.reduce((acc, president) => {
+
+    if(president.leftOffice) {
+      
+      return acc + (president.leftOffice - president.tookOffice)
+    }
+    
+    return acc
+  }, 0)
+    
+    return totalYearsAsPresident;
+
+
+
+}
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
@@ -459,35 +507,113 @@ function  countYearsInOffice(presidentsArr) {}
 
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
 
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
+const totalRepublicanPresidents = presidentsArr.reduce((acc, president) => {
+
+  if(president.party === "Republican") {
+    
+      return acc += 1
+    
+  }
+   return acc
+}, 0)
+
+  return totalRepublicanPresidents
+
+
+}
+
+ // console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
 
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
 
+    presidentsArr.sort((president1,president2) => {
+
+      if(president1.birthYear < president2.birthYear) {
+        return -1
+      }
+      else if (president1.birthYear > president2.birthYear){
+        return 1
+      }
+      else {
+        return 0
+      }
+  
+      }) 
+      return presidentsArr
+      
+    }
+
+
+  // console.log(sortPresidentsByBirthYear(presidents))
 
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+  const presidentAgeInauguration = presidentsArr.map((president => {
+    
+    const ageAtInauguration = president.tookOffice - president.birthYear;
+
+    return {
+      ... president, // ... spread operator to copy all the elements of the object in the new array + the new element I want to assign.
+      ageAtInauguration: ageAtInauguration,
+    };
+
+  }))
+
+  return presidentAgeInauguration
+
+  }
+
+ //console.log("ageAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 
 
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
 
-// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
+  const filterByAge = presidentsArr.filter((presidentsArr) => {
+
+    if(presidentsArr.birthYear > year){
+      return true
+    }
+
+  })
+  return filterByAge
+
+}
+
+// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents, 1900));
 
 
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+
+  presidentsArr.sort((president1, president2) => {
+
+    if(president1.name > president2.name){
+    return 1
+  }
+  else if (president1.name < president2.name) {
+    return -1
+  }
+  else {
+    return 0
+  }
+  })
+  return presidentsArr
+
+}
+
+//console.log(sortPresidentsByName(presidents))
 
