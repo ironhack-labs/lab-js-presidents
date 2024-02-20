@@ -465,9 +465,20 @@ function getAffiliatedPresidents(presidentsArr) {
 // );
 
 // Iteration 5: Count Years in Office - `reduce()`
-function countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  const total = presidentsArr.reduce((acc, currentPresident) => {
+    if (currentPresident.leftOffice) {
+      const totalYear =
+        currentPresident.leftOffice - currentPresident.tookOffice;
+      return acc + totalYear;
+    } else {
+      return acc;
+    }
+  }, 0);
+  return total;
+}
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 // Iteration 6: Count Republican Presidents - `reduce()`
 function countRepublicanPresidents(presidentsArr) {}
