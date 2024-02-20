@@ -419,41 +419,73 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+   let presidentsNames = presidentsArr.map((currentPresidentArr) => {
+    return currentPresidentArr.name;
+  });
+  return presidentsNames;
+}
 
-// console.log("getNames(presidents)", getNames(presidents));
+//console.log("getNames(presidents)", getNames(presidents));
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  let presidentsNamesAndParty = presidentsArr.map((currentPresidentObj) => {
+    return {name : currentPresidentObj.name,
+            party :currentPresidentObj.party}
+  });
+  return presidentsNamesAndParty;
+}
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+ //console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democratPresidents = presidentsArr.filter((currentPresidentObj) => {
+    if(currentPresidentObj.party === "Democratic"){
+      return true;
+    }
+  });
+  return democratPresidents;
+}
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+ //console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  let affiliatedPresidents = presidentsArr.filter((currentPresidentObj) => {
+    if(currentPresidentObj.party){
+      return true;
+    }
+  });
+  return affiliatedPresidents;
+}
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
+ //console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
 
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  let totalYearsInOffice = presidentsArr.reduce((acc, currentPresident) => {
+    if(currentPresident.leftOffice){
+      return acc + (currentPresident.leftOffice - currentPresident.tookOffice);
+    }
+  }, 0);
+  return totalYearsInOffice;
+}
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+ console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 
 
