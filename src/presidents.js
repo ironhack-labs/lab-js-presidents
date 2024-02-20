@@ -430,21 +430,39 @@ function getNamesAndParty(presidentsArr) {
   const mappedPresidentParty = presidentsArr.map((president) => {
     return { name: president.name, party: president.party };
   });
-
   return mappedPresidentParty;
 }
 
 console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+function getDemocraticPresidents(presidentsArr) {
+  const filteredArray = presidentsArr.filter((president) => {
+    if (president.party === "Democratic") {
+      return true;
+    }
+  });
+  return filteredArray;
+}
+// console.log(
+//   "getDemocraticPresidents(presidents)",
+//   getDemocraticPresidents(presidents)
+// );
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  const filteredArray = presidentsArr.filter((president) => {
+    if (president.party) {
+      return true;
+    }
+  });
+  return filteredArray;
+}
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
+// console.log(
+//   "getAffiliatedPresidents(presidents)",
+//   getAffiliatedPresidents(presidents)
+// );
 
 // Iteration 5: Count Years in Office - `reduce()`
 function countYearsInOffice(presidentsArr) {}
