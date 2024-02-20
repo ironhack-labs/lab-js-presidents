@@ -426,9 +426,15 @@ function getNames(presidentsArr) {
 // console.log("getNames(presidents)", getNames(presidents));
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  const mappedPresidentParty = presidentsArr.map((president) => {
+    return { name: president.name, party: president.party };
+  });
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+  return mappedPresidentParty;
+}
+
+console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 // Iteration 3: Democratic presidents - `filter()`
 function getDemocraticPresidents(presidentsArr) {}
