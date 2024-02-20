@@ -478,7 +478,11 @@ function countRepublicanPresidents(presidentsArr) {
 // console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((president) => {
+    return president.birthYear;
+  });
+}
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {}
