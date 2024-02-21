@@ -479,15 +479,24 @@ function countRepublicanPresidents(presidentsArr) {
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
 function sortPresidentsByBirthYear(presidentsArr) {
-  return presidentsArr.sort((president) => {
-    return president.birthYear;
+  return presidentsArr.sort((president1, president2) => {
+    return president1.birthYear - president2.birthYear;
   });
 }
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map((president) => {
+    let ageAtInauguration = president.tookOffice - president.birthYear;
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+    return {
+      ...president,
+      ageAtInauguration: ageAtInauguration,
+    };
+  });
+}
+
+console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {}
