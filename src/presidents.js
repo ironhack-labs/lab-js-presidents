@@ -498,7 +498,7 @@ function countRepublicanPresidents(presidentsArr) {
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
 function sortPresidentsByBirthYear(presidentsArr) {
   function compareByBirthYear(a, b) {
-    return b.birthYear- a.birthYear;
+    return a.birthYear-b.birthYear;
   }
 
   presidentsArr.sort(compareByBirthYear);
