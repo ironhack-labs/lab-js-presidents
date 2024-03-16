@@ -419,15 +419,25 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const presidentsName = presidentsArr.map( (presidents) => {
+    return presidents.name;
+  })
 
-// console.log("getNames(presidents)", getNames(presidents));
+  return presidentsName
+}
+
+
+
+//console.log("getNames(presidents)", getNames(presidents));
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+
+}
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
@@ -435,9 +445,18 @@ function getNamesAndParty(presidentsArr) {}
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticParty = presidentsArr.filter((presidents) =>{
+    if (presidents.party === "Democratic"){
+      return true
+    }
+    return false
+  })
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+  return democraticParty
+}
+
+//console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
@@ -451,7 +470,8 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+}
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
@@ -467,7 +487,21 @@ function countRepublicanPresidents(presidentsArr) {}
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const birthYear = presidentsArr.sort( (a,b) => {
+    if (a.birthYear > b.birthYear){
+      return 1
+    }
+
+    else if (a.birthYear < b.birthYear){
+      return -1
+    }
+
+    return 0
+  })
+
+  return birthYear
+}
 
 
 
