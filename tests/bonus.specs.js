@@ -1,4 +1,4 @@
-xdescribe("BONUS", () => {
+describe("BONUS", () => {
   // Bonus: Iteration 5 | Age of Presidents in the Office - `map()`
   describe("Function getAgeAtInauguration()", () => {
     it("should take 1 argument (presidents)", () => {
