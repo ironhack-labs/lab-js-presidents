@@ -222,3 +222,60 @@ describe("Function sortPresidentsByBirthYear()", () => {
     ]);
   });
 });
+
+// Bonus: Iteration 6 | Presidents Born After - `filter()`
+describe("Function getPresidentsBornAfter()", () => {
+  it("should take 2 arguments (presidents, year)", () => {
+    expect(getPresidentsBornAfter).toBeDefined();
+    expect(getPresidentsBornAfter.length).toEqual(2);
+  });
+
+  it("should use the 'filter()' method to filter the presidents array", () => {
+    const testPresidents = [
+      { name: "George Washington", tookOffice: 1789, leftOffice: 1797 },
+      { name: "George H. W. Bush", tookOffice: 1989, leftOffice: 1993 },
+      { name: "Bill Clinton", tookOffice: 1993, leftOffice: 2001 },
+      { name: "Barack Obama", tookOffice: 2009, leftOffice: 2017 },
+      { name: "Donald Trump", tookOffice: 2017, leftOffice: 2021 },
+    ];
+
+    const filterSpy = spyOn(testPresidents, "filter");
+
+    getPresidentsBornAfter(testPresidents);
+    expect(filterSpy).toHaveBeenCalled();
+    expect(filterSpy).toHaveBeenCalledWith(jasmine.any(Function));
+  });
+
+  it("should return an array of objects", () => {
+    const testPresidents = [
+      { name: "George Washington", birthYear: 1732 },
+      { name: "John Adams", birthYear: 1735 },
+      { name: "George H. W. Bush", birthYear: 1924 },
+      { name: "Bill Clinton", birthYear: 1946 },
+      { name: "Barack Obama", birthYear: 1961 },
+    ];
+
+    expect(getPresidentsBornAfter(testPresidents, 1900)).toEqual(
+      jasmine.any(Array)
+    );
+    expect(getPresidentsBornAfter(testPresidents, 1900)[0]).toEqual(
+      jasmine.any(Object)
+    );
+  });
+
+  it("should return an array containing only the presidents born after the specified year", () => {
+    const testPresidents = [
+      { name: "George Washington", birthYear: 1732 },
+      { name: "John Adams", birthYear: 1735 },
+      { name: "George H. W. Bush", birthYear: 1924 },
+      { name: "Bill Clinton", birthYear: 1946 },
+      { name: "Barack Obama", birthYear: 1961 },
+    ];
+
+    expect(getPresidentsBornAfter(testPresidents, 1924)).toEqual([
+      { name: "Bill Clinton", birthYear: 1946 },
+      { name: "Barack Obama", birthYear: 1961 },
+    ]);
+  });
+});
+
