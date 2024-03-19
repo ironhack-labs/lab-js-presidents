@@ -480,13 +480,7 @@ function sortPresidentsByBirthYear(presidentsArr) {
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {
   return presidentsArr.map(president => ({
-    //...president works but the order is wrong. ageAtInauguration is listed as first. To fix it the code gets more complicated.
-    id : president.id,
-    name: president.name,
-    birthYear: president.birthYear,
-    deathYear: president.deathYear,
-    tookOffice: president.tookOffice,
-    leftOffice: president.leftOffice,
+    ...president,
     ageAtInauguration: president.tookOffice - president.birthYear
   }));
 }
