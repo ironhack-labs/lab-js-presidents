@@ -471,10 +471,10 @@ function  countYearsInOffice(presidentsArr) {
 
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {
-  return presidentsArr.reduce((totalRepublicans,yearsInOffice) =>{
-    return totalyears + ((yearsInOffice.leftOffice ? yearsInOffice.leftOffice : yearsInOffice.tookOffice  ) - yearsInOffice.tookOffice);},0)
-}
+// function countRepublicanPresidents(presidentsArr) {
+//   return presidentsArr.reduce((totalRepublicans,yearsInOffice) =>{
+//     return totalyears + ((yearsInOffice.leftOffice ? yearsInOffice.leftOffice : yearsInOffice.tookOffice  ) - yearsInOffice.tookOffice);},0)
+// }
 
 // console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
