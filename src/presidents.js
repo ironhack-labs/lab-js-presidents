@@ -512,91 +512,67 @@ console.log(
 // Important: You should skip the president who is still in office
 // (the president with the leftOffice property set to null) and not include them in the total years.
 
-// //first lets create new array without the latest president
-// // The pop() method removes (pops) the last element of an array.
-// // The pop() method changes the original array.
-// // The pop() method returns the removed element.
-
-const latestPresident = presidents.pop();
-presidents.pop();
-
-// console.log("these are presidents without latest", presidents);
-
-let totalYearsServed = 0;
-//now we start this function with the presidents array already excluding the last
 function countYearsInOffice(presidentsArr) {
-  //find the total left office time, without including the latest president
-  const totalLeftOffice = presidentsArr.reduce((acc, curr) => {
-    return acc + curr.leftOffice;
+  const countYears = presidentsArr.reduce((acc, curr) => {
+    if (curr.leftOffice !== null) {
+      //we know that only last president still didnt leave office
+      //as long as the leftOffice is not null
+      // console.log(curr.leftOffice, curr.tookOffice);
+      return acc + curr.leftOffice - curr.tookOffice;
+    }
+    return acc;
   }, 0);
-  //find the total took office time, without including the latest president
-  const totalTookOffice = presidentsArr.reduce((acc, curr) => {
-    return acc + curr.tookOffice;
-  }, 0);
-
-  //push the result into the totalYearsServed array
-  totalYearsServed = totalLeftOffice - totalTookOffice;
-  return Number(totalYearsServed + 4); //because the current president already served 4 years
+  return countYears;
 }
 
-console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-//output: countYearsInOffice(presidents) [ 232 ]
-//doesnt pass the tests because we need if statements :(
+// ** DOING THIS COUNT OF YEARS SERVED BY POP THE ARRAY, AND THEN UPDATING AGAIN BY ADDING THE LATEST PRESIDENT
+//got the same result but doesn't pass test
 
-//GENIOUS DOING THIS WITHOUT ONE SINGLE GOOGLE!!! O/
-//didnt pass the tests because they want an "if statement"
+// // //first lets create new array without the latest president
+// // // The pop() method removes (pops) the last element of an array.
+// // // The pop() method changes the original array.
+// // // The pop() method returns the removed element.
 
-// //example reduce from class
-// const averageCalories = menu.reduce((acc, curr) => {
-//   return acc + curr.calories; //the reduce needs to finish accumulating
-// }, 0); //so we cannot do the average here
-// //therefore we will do average after we accumulate, when we console.log
-// console.log(averageCalories / menu.length); // 278
+// const latestPresident = presidents.pop();
+// presidents.pop();
 
-//BEFORE DOING NEXT ITERACTIONS, LET'S RETURN THE LATEST PRESIDENT TO THE ARRAY
-//The push() method adds new items to the end of an array.
-presidents.push(latestPresident);
-console.log(presidents); //this is working, included Joe Biden back
+// // console.log("these are presidents without latest", presidents);
 
-// // Iteration 6: Count Republican Presidents - `reduce()`
-// function countRepublicanPresidents(presidentsArr) {
-//   //first filter the republicans into a new array
-//   const onlyRepublicans = presidentsArr.filter((president) => {
-//     return president.party === "Republican";
-//   });
+// let totalYearsServed = 0;
+// //now we start this function with the presidents array already excluding the last
+// function countYearsInOffice(presidentsArr) {
+//   //find the total left office time, without including the latest president
+//   const totalLeftOffice = presidentsArr.reduce((acc, curr) => {
+//     return acc + curr.leftOffice;
+//   }, 0);
+//   //find the total took office time, without including the latest president
+//   const totalTookOffice = presidentsArr.reduce((acc, curr) => {
+//     return acc + curr.tookOffice;
+//   }, 0);
 
-//   //now we can reduce to count this
-//   const republicans = onlyRepublicans.reduce((acc, curr) => {
-//     return acc + curr;
-//   });
-//   return republicans;
+//   //push the result into the totalYearsServed array
+//   totalYearsServed = totalLeftOffice - totalTookOffice;
+//   return Number(totalYearsServed + 4); //because the current president already served 4 years
 // }
-// console.log(republicans);
 
-// console.log(
-//   "countRepublicanPresidents(presidents)",
-//   countRepublicanPresidents(presidents)
-// );
+// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+// //output: countYearsInOffice(presidents) [ 232 ]
+// //doesnt pass the tests because we need if statements :(
 
-// Iteration 7: Sort Presidents by Birth Year - `sort()`
-//The sort() method is used to sort the elements of an array in place.
-//This means the original array is mutated,
-//and the sorted elements are rearranged within the same array.
+// //GENIOUS DOING THIS WITHOUT ONE SINGLE GOOGLE!!! O/
+// //didnt pass the tests because they want an "if statement"
 
-//The function should use the sort() method to sort the presidents array by birth year,
-// from oldest to youngest.
+// // //example reduce from class
+// // const averageCalories = menu.reduce((acc, curr) => {
+// //   return acc + curr.calories; //the reduce needs to finish accumulating
+// // }, 0); //so we cannot do the average here
+// // //therefore we will do average after we accumulate, when we console.log
+// // console.log(averageCalories / menu.length); // 278
 
-// let allBirthYears = [];
-
-// function sortPresidentsByBirthYear(presidentsArr) {
-//   //create a new array only with birthyears with map
-//   presidentsArr.forEach((president) => allBirthYears.push(president.birthYear));
-
-//   allBirthYears.sort((a, b) => a - b);
-//   return allBirthYears;
-// }
-// //doesnt pass the tests because we need to have the presidents array passed as argument :(
-// console.log(sortPresidentsByBirthYear(presidents));
+// //BEFORE DOING NEXT ITERACTIONS, LET'S RETURN THE LATEST PRESIDENT TO THE ARRAY
+// //The push() method adds new items to the end of an array.
+// presidents.push(latestPresident);
+// console.log(presidents); //this is working, included Joe Biden back
 
 //Iteration 7 - sort by birth year
 function sortPresidentsByBirthYear(presidentsArr) {
@@ -639,8 +615,11 @@ function sortPresidentsByName(presidentsArr) {
 
 //bonus iteration 11 count republicans
 function countRepublicanPresidents(presidentsArr) {
-  presidentsArr.filter((president) => president.party === "Republican");
-  return presidentsArr.reduce((acc) => {
-    return acc++;
+  const numberOfRepuclican = presidentsArr.reduce((acc, curr) => {
+    if (curr.party === "Republican") {
+      return (acc += 1);
+    }
+    return acc;
   }, 0);
+  return numberOfRepuclican;
 }
