@@ -492,6 +492,25 @@ function getAgeAtInauguration(presidentsArr) {
   });
 }
 
+// or
+/*
+function getAgeAtInauguration(presidentsArr) {
+  const theAgeDifference = presidentsArr.map((president) => {
+    return {
+      id: president.id,
+      name: president.name,
+      birthYear: president.birthYear,
+      deathYear: president.deathYear,
+      tookOffice: president.tookOffice,
+      leftOffice: president.leftOffice,
+      party: president.party,
+      ageAtInauguration: president.tookOffice - president.birthYear,
+    };
+  });
+  return theAgeDifference;
+}
+*/
+
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
   return (bornAfterPres = presidentsArr.filter((e) => {
