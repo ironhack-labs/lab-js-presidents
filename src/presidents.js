@@ -444,14 +444,14 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 // Iteration 5: Count Years in Office - `reduce()`
 function countYearsInOffice(presidentsArr) {
-  return presidentsArr.reduce((acc, obj) => {
-    if (obj.leftOffice) {
-      acc + (obj.leftOffice - obj.tookOffice);
+  const countYears = presidentsArr.reduce((acc, curr) => {
+    if (curr.leftOffice !== null) {
+      return acc + curr.leftOffice - curr.tookOffice;
     } else {
-      const currentYear = new Date().getFullYear();
-      return acc + (currentYear - obj.tookOffice);
+      return acc;
     }
   }, 0);
+  return countYears;
 }
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
