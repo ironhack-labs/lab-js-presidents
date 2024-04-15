@@ -419,15 +419,25 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+    const presiNames = presidentsArr.map((presi) => {
+      return presi.name;
+    });
+    //console.log(presiNames)
+    return presiNames
+}
 
 // console.log("getNames(presidents)", getNames(presidents));
 
 
-
-
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {/*
+    const presiNames = presidentsArr.map((presi) => {
+      return presi.name;
+    });
+    //console.log(presiNames)
+    return presiNames*/
+}
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
@@ -435,7 +445,15 @@ function getNamesAndParty(presidentsArr) {}
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const demoPresis =  presidentsArr.filter((presi) => {
+    return presi.party === "Democratic";
+  });
+  
+  console.log(demoPresis);
+  return demoPresis
+  
+}
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
@@ -451,10 +469,24 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+  const presisNotNull = presidentsArr.filter((presidente) => {
+    return presidente.leftOffice !== null;
+  });//CREAMOS UN ARRAY NUEVO QUE SOLO TIENE PRESIDENTES CON FECHA DE SALIDA VALIDA (QUE NO SON NULL)
+  
+  const totalYears = presisNotNull.reduce((acumulador, presidente) => {
+    let entrada=presidente.tookOffice
+    let salida=presidente.leftOffice
+    let years = salida-entrada;
+    //console.log(`año entrada ${presidente.tookOffice} - año salida ${presidente.leftOffice} TOTAL:${years}`);
+    console.log(acumulador + years)
+    return acumulador + years;
+  }, 0);//BUSCAMOS EN EL ARRAY SIN NULLS LAS FECHAS, LAS RESTAMOS Y LAS GUARDAMOS EN AÑOSTOTALES
 
+ return totalYears
+}
+ //console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));//232 - Jasmine dice que falta usar reduce()
 
 
 
