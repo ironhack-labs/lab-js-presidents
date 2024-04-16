@@ -1,5 +1,5 @@
 // Iteration 1 | getNames()
-describe("Function getNames()", () => {  
+describe("Function getNames()", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getNames).toEqual("function");
     expect(getNames.length).toEqual(1);
@@ -18,7 +18,7 @@ describe("Function getNames()", () => {
     getNames(testPresidents);
     expect(mapSpy).toHaveBeenCalled();
     expect(mapSpy).toHaveBeenCalledWith(jasmine.any(Function));
-  });  
+  });
 
   it("should return an array", () => {
     const testPresidents = [
@@ -56,7 +56,7 @@ describe("Function getNames()", () => {
 
 
 // Iteration 2 | getDemocraticPresidents()
-describe("Function getDemocraticPresidents()", () => {  
+describe("Function getDemocraticPresidents()", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getDemocraticPresidents).toEqual("function");
     expect(getDemocraticPresidents.length).toEqual(1);
@@ -127,7 +127,7 @@ describe("Function countYearsInOffice()", () => {
     expect(reduceSpy).toHaveBeenCalled();
     expect(reduceSpy).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Number));
     expect(result).toEqual(10);
-    
+
   });
 
   it("should return a number", () => {

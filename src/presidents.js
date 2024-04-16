@@ -417,77 +417,150 @@ const presidents = [
 
 
 
-
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+
+  console.log(presidents)
+
+  const listOfNames = presidentsArr.map((eachPresident) => {
+    return eachPresident.name
+  })
+  return listOfNames
+}
 
 // console.log("getNames(presidents)", getNames(presidents));
 
+// Iteration 2: Democratic presidents - `filter()`
+function getDemocraticPresidents(presidentsArr) {
+  console.log('yay')
+
+  let democraticPresidents = presidentsArr.filter((eachPresident) => {
+    return eachPresident.party === "Democratic"
+  })
+
+  return democraticPresidents
+}
+
+
+// Iteration 3: Count Years in Office - `reduce()`
+function countYearsInOffice(presidentsArr) {
+
+  const countYears = presidentsArr.reduce((acc, eachPresident) => {
+    if (eachPresident.leftOffice !== null) {
+      const yearsInOffice = eachPresident.leftOffice - eachPresident.tookOffice
+      return acc + yearsInOffice
+    }
+    else {
+      return acc
+    }
+
+  }, 0)
+
+  return countYears
+}
+
+// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+
+
+// Iteration 4: Sort Presidents by Birth Year - `sort()`
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  const byBirthYear = presidentsArr.sort((a, b) => {
+    return a.birthYear - b.birthYear
+  })
+
+  return byBirthYear
+}
+
+
+// BONUS: Iteration 5 | Age At Inauguration - `map()`
+function getAgeAtInauguration(presidentsArr) {
+
+
+  const tookOfficeYear = presidentsArr.map((eachPresident) => {
+
+    const yearOperation = eachPresident.tookOffice - eachPresident.birthYear
+
+    const ageAtInauguration = {
+      ...eachPresident,
+      ageAtInauguration: yearOperation
+    }
+    return ageAtInauguration
+  })
+
+  return tookOfficeYear
+
+}
+
+// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+
+
+// BONUS: Iteration 6 | Presidents Born After - `filter()`
+function getPresidentsBornAfter(presidentsArr, year) {
+
+  const bornAfter = presidentsArr.filter((eachPresident) => {
+    if (eachPresident.birthYear > year) {
+      return true
+    }
+    else {
+      return false
+    }
+  })
+  return bornAfter
+}
 
 
 
-// Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+// The function should use the filter() method to create a new array containing only the presidents 
+// who were born after the year provided as an argument.The function should then return the new filtered array containing only
+//  the presidents who were born after the specified year.
+
+
+// const coolPlaces = places.filter(eachPlace => {
+//   return eachPlace.garage && eachPlace.price < 500
+// })
+// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
+
+
+// Iteration 7: Count Republican Presidents - `reduce()`
+function countRepublicanPresidents(presidentsArr) { }
+
+// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
+
+
+
+// BONUS: Iteration 8: Sort Presidents by Name - `sort()`
+function sortPresidentsByName(presidentsArr) { }
+
+
+
+
+
+
+
+
+
+// EXTRA QUE NO APARECEN EN NINGUN LADO 
+
+
+// Iteration 4: Affiliated Presidents - `filter()`
+function getAffiliatedPresidents(presidentsArr) { }
+
+// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
+
+
+
+// Iteration 3: Name and Party  - `map()`
+function getNamesAndParty(presidentsArr) { }
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
-// Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
 
-// Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
 
-// console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
-
-
-
-
-// Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
-
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-
-
-
-
-// Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
-
-// console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
-
-
-
-
-// Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
-
-// BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
-
-
-
-
-// BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
-
-
-
-
-// BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
 
