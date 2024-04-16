@@ -419,7 +419,11 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  return presidentsArr.map((element) => {
+    return element.name;
+  })
+}
 
 // console.log("getNames(presidents)", getNames(presidents));
 
@@ -427,23 +431,45 @@ function getNames(presidentsArr) {}
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  const result = presidentsArr.map(president => {
+    return {
+      name: president.name,
+      party: president.party
+    }; 
+      });
+      return result;
+    }
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+ console.log(getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const totalYears = presidentsArr.reduce((acc, curr) => {
+    if (curr.leftOffice !== null) {
+      acc += (curr.leftOffice - curr.tookOffice);
+    } 
+    return acc;
+  }, 0)
+  return totalYears;
+}
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+console.log(getAgeAtInauguration(presidents));
 
 
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function sortPresidentsbyBirthYear(presidentsArr) {
+  const result1 = presidentsArr.sort((a, b) => {
+    return a.birthYear - b.birthYear;
+  });
+  return result1;
+}
+console.log(sortPresidentsByBirthYear(presidents));
 
 // console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
@@ -451,9 +477,11 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  getAgeAtInauguration(presidentsArr) {
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+}
+
+// console.log("getAgeAtInauguration(presidents)", getAgeAtInauguration(presidents));
 
 
 
