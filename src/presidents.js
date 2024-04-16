@@ -419,7 +419,11 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  return presidentsArr.map(presidents => presidents.name);
+}
+const presidentNames = getNames(presidents);
+
 
 // console.log("getNames(presidents)", getNames(presidents));
 
@@ -427,15 +431,27 @@ function getNames(presidentsArr) {}
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  return presidentsArr.map(presidents => {
+    return{
+      name: presidents.name,
+      party: presidents.party
+    };
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+  });
+}
+const presidentsParty = getNamesAndParty(presidents);
+
+ console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter((president) => president.party === "Democratic");
+}
+console.log(getDemocraticPresidents(presidents));
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
@@ -443,7 +459,9 @@ function getDemocraticPresidents(presidentsArr) {}
 
 
 // Iteration 4: Affiliated Presidents - `filter()`
-function getAffiliatedPresidents(presidentsArr) {}
+function getAffiliatedPresidents(presidentsArr) {
+  return presidentsArr.filter(president => president.party !== null);
+}
 
 // console.log("getAffiliatedPresidents(presidents)", getAffiliatedPresidents(presidents));
 
