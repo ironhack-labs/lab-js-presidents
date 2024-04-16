@@ -419,7 +419,10 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const result = presidentsArr.map(ele => ele.name)
+  return result
+}
 
 // console.log("getNames(presidents)", getNames(presidents));
 
@@ -427,7 +430,11 @@ function getNames(presidentsArr) {}
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  const nameAndParty = presidentsArr.map((president) => ({name:president.name,party:president.party}));
+  
+  return nameAndParty;
+}
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
@@ -435,7 +442,12 @@ function getNamesAndParty(presidentsArr) {}
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democratic = presidentsArr.filter((president) => {
+    return president.party === "Democratic"
+  })
+  return democratic;
+}
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
@@ -451,10 +463,18 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const totalYearsServer = presidentsArr.reduce((acc,president) => {
+    if(president.leftOffice !== null){
+      return acc + (president.leftOffice - president.tookOffice)
+    } else{
+      return acc;
+    }
+  },0)
+  return totalYearsServer
+}
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-
 
 
 
@@ -467,7 +487,10 @@ function countRepublicanPresidents(presidentsArr) {}
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+  return presidentsArr;
+}
 
 
 
