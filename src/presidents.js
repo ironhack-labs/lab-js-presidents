@@ -419,25 +419,34 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  let newArray = presidentsArr.map((presidents) => presidents.name);
+  return newArray;
+}
 
-// console.log("getNames(presidents)", getNames(presidents));
+console.log("getNames(presidents)", getNames(presidents));
 
 
 
 
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+  let newArray = presidentsArr.map((presidents) => presidents.name && presidents.party);
+  return newArray;
+}
 
-// console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
+console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
 
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let newArray = presidentsArr.filter((presidents) => presidents.party === "Democratic");
+  return newArray;
+}
 
-// console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
+console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
 
 
@@ -451,9 +460,17 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  let totalYears = presidentsArr.reduce((acc, curr) => {
+    if(curr.tookOffice && curr.leftOffice){
+      acc+=(curr.leftOffice - curr.tookOffice);
+    }
+    return acc;
+  },0);
+  return totalYears;
+}
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
+console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
 
 
@@ -467,7 +484,13 @@ function countRepublicanPresidents(presidentsArr) {}
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  let oldestToYoung = presidentsArr.sort((a,b) => {
+    return a.birthYear - b.birthYear;
+  })
+  return oldestToYoung;
+}
+console.log("sortPresidentsByBirthYear(presidents)", sortPresidentsByBirthYear(presidents));
 
 
 
