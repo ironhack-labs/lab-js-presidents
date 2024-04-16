@@ -419,15 +419,20 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
-
+function getNames(presidents) {
+  const presidentsArr = presidents.map((element) => {
+  return element.name;
+});
+return presidentsArr;
+}
+console.log(getNames(presidents))
 // console.log("getNames(presidents)", getNames(presidents));
 
 
-
-
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {
+ 
+}
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
@@ -435,7 +440,13 @@ function getNamesAndParty(presidentsArr) {}
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresident = presidentsArr.filter((element) => {
+    return element.party === 'Democratic';
+  });
+  return democraticPresident;
+}
+console.log(getDemocraticPresidents(presidentsArr));
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
@@ -451,7 +462,21 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce((acc, currentValue)=> {
+    if (currentValue.leftOffice !== null){
+
+      return acc + (currentValue.leftOffice - currentValue.tookOffice);
+    } else {
+      return acc;
+
+    }
+
+  },0);
+
+    return totalYears;
+}
+
 
 // console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
 
@@ -467,7 +492,21 @@ function countRepublicanPresidents(presidentsArr) {}
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  const byBirthYear = presidentsArr.sort( function(presd1, presd2) {
+    if (presd1.birthYear < presd2.birthYear) {
+      return -1;
+    } else if (presd1.birthYear > presd2.birthYear) {
+      return 1;
+    } else {
+      return 0;
+    }
+
+  });
+return byBirthYear;
+
+}
 
 
 
