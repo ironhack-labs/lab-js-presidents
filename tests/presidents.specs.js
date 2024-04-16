@@ -111,8 +111,8 @@ describe("Function getDemocraticPresidents()", () => {
 // Iteration 3 | countYearsInOffice()
 describe("Function countYearsInOffice()", () => {
   it("should take 1 argument (presidents)", () => {
-    expect(typeof countYearsInOffice).toEqual("function");
-    expect(countYearsInOffice.length).toEqual(1);
+    expect(typeof getAgeAtInauguration).toEqual("function");
+    expect(getAgeAtInauguration.length).toEqual(1);
   });
 
   it("should use the 'reduce()' method to iterate over the presidents array passed as argument", () => {
@@ -123,7 +123,7 @@ describe("Function countYearsInOffice()", () => {
 
     const reduceSpy = spyOn(testPresidents, "reduce").and.returnValue(10);
 
-    const result = countYearsInOffice(testPresidents);
+    const result = getAgeAtInauguration(testPresidents);
     expect(reduceSpy).toHaveBeenCalled();
     expect(reduceSpy).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Number));
     expect(result).toEqual(10);
@@ -138,7 +138,7 @@ describe("Function countYearsInOffice()", () => {
       { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 },
     ];
 
-    const result = countYearsInOffice(testPresidents);
+    const result = getAgeAtInauguration(testPresidents);
 
     expect(result).toEqual(jasmine.any(Number));
   });
@@ -149,7 +149,7 @@ describe("Function countYearsInOffice()", () => {
       { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
     ];
 
-    const result = countYearsInOffice(testPresidents);
+    const result = getAgeAtInauguration(testPresidents);
 
     expect(result).toEqual(10);
   });
@@ -162,7 +162,7 @@ describe("Function countYearsInOffice()", () => {
       { name: "Joseph Biden", party: "Democratic", tookOffice: 2021, leftOffice: null }, // still in office
     ];
 
-    const result = countYearsInOffice(testPresidents);
+    const result = getAgeAtInauguration(testPresidents);
 
     expect(result).toEqual(18);
   });
