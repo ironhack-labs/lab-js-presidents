@@ -461,9 +461,7 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 // Iteration 5: Count Years in Office - `reduce()`
 function  countYearsInOffice(presidentsArr) {
-    presidentsArr.reduce((acc,x) =>  
-    {if (x.leftOffice !== null) {
-     return acc + (x.leftOffice-x.tookOffice)}},0) 
+  return presidentsArr.reduce((acc,x) =>  acc + (x.leftOffice-x.tookOffice),0) 
   }
 
 
