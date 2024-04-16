@@ -419,15 +419,25 @@ const presidents = [
 
 
 // Iteration 1: Names of Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+    const presiNames = presidentsArr.map((presi) => {
+      return presi.name;
+    });
+    //console.log(presiNames)
+    return presiNames
+}
 
 // console.log("getNames(presidents)", getNames(presidents));
 
 
-
-
 // Iteration 2: Name and Party  - `map()`
-function getNamesAndParty(presidentsArr) {}
+function getNamesAndParty(presidentsArr) {/*
+    const presiNameParty = presidentsArr.map((presi) => {
+      return presi.name;
+    });
+    //console.log(presiNames)
+    return presiNameParty*/
+}
 
 // console.log("getNamesAndParty(presidents)", getNamesAndParty(presidents));
 
@@ -435,7 +445,15 @@ function getNamesAndParty(presidentsArr) {}
 
 
 // Iteration 3: Democratic presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const demoPresis =  presidentsArr.filter((presi) => {
+    return presi.party === "Democratic";
+  });
+  
+  //console.log(demoPresis);
+  return demoPresis
+  
+}
 
 // console.log("getDemocraticPresidents(presidents)", getDemocraticPresidents(presidents));
 
@@ -451,15 +469,41 @@ function getAffiliatedPresidents(presidentsArr) {}
 
 
 // Iteration 5: Count Years in Office - `reduce()`
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
 
-// console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));
-
+  /*const presisNotNull = presidentsArr.filter((presidente) => {
+    return presidente.leftOffice !== null
+  })//CREAMOS UN ARRAY NUEVO QUE SOLO TIENE PRESIDENTES CON FECHA DE SALIDA VALIDA (QUE NO SON NULL)
+  */
+  const totalYears = presidentsArr.reduce((acumulador, presidente) => {
+    let {leftOffice,tookOffice} = presidente//mismo nombre que el parametro que recibimos para guardar "value" de nuestro nombre dentro de las llaves
+    let years = leftOffice-tookOffice;    
+    if(leftOffice !== null){
+      return acumulador + years;
+    }else{
+      return acumulador 
+    }
+    //console.log(`año entrada ${presidente.tookOffice} - año salida ${presidente.leftOffice} TOTAL:${years}`);
+    //console.log(acumulador + years)
+    //return acumulador + years;
+  }, 0)
+ return totalYears
+}//*JASMINE ME DICE QUE NO ESTOY USANDO EL METODO REDUCE()
+//!EN CONSOLA TODO ESTA OK
+ //console.log("countYearsInOffice(presidents)", countYearsInOffice(presidents));//232 - Jasmine dice que falta usar reduce()
 
 
 
 // Iteration 6: Count Republican Presidents - `reduce()`
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  let count = presidentsArr.reduce((acumulador, presidente) => {
+    if(presidente.party ==="Republican"){
+      acumulador++
+    }
+    return acumulador
+  }, 0)
+  return count
+}
 
 // console.log("countRepublicanPresidents(presidents)", countRepublicanPresidents(presidents));
 
@@ -467,13 +511,36 @@ function countRepublicanPresidents(presidentsArr) {}
 
 
 // Iteration 7: Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+//hacer un sort que devuelva la lista de presis ordenados por edad (descendente)
+let presisOrdenados=presidentsArr.sort((e2,e1)=>{
+        if(e1.birthYear>e2.birthYear){
+          return -1
+        }else if(e1.birthYear<e2.birthYear){
+          return 1
+        }else{
+          return 0
+        }
+  //return e1.birthYear<e2.birthYear//forma abreviada del condicional
+})
+//console.log(presisOrdenados)
+return presisOrdenados
+}
 
 
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+
+  let presisInaugArr = presidentsArr.map((president)=>{
+    president.ageAtInauguration=president.tookOffice-president.birthYear
+    //console.log(president)
+    return president
+  })
+  //console.log(presisInaugArr)
+  return presisInaugArr
+}
 
 // console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
@@ -481,13 +548,32 @@ function getAgeAtInauguration(presidentsArr) {}
 
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
+function getPresidentsBornAfter(presidentsArr, year) {
+  const arrFiltered = presidentsArr.filter((presidente) => {
+    return presidente.birthYear > year
+  })
+//  console.log(arrFiltered)
+  return arrFiltered
+}
+//console.log(getPresidentsBornAfter(presidents, 1913))
+//console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
 
 
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+//hacer un sort que devuelva la lista de presis ordenados alfabeticamente
+let presisOrdenadosAlfa=presidentsArr.sort((e2,e1)=>{
+  if(e1.name.toLowerCase()>e2.name.toLowerCase()){
+    return -1
+  }else if(e1.name.toLowerCase()<e2.name.toLowerCase()){
+    return 1
+  }else{
+    return 0
+  }
+})
+//console.log(presisOrdenadosAlfa)
+return presisOrdenadosAlfa
+}
 
