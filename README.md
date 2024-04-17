@@ -23,7 +23,7 @@
   - Sort arrays using the `sort()`  method.
 
   <br>
-  <hr> 
+  <hr>
 
 </details>
 
