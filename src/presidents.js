@@ -504,8 +504,10 @@ function countRepublicanPresidents(presidentsArr) {
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {
-  const sortPresidentsByName = presidentsArr.sort((a, b) => a.name - b.name);
-  return sortPresidentsByName;
+  return presidentsArr.sort((a, b) => {
+    if (a.name > b.name) return 1;
+    if (a.name < b.name) return -1;
+  });
 }
 
 console.log(sortPresidentsByName(presidents));
