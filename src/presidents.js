@@ -448,7 +448,14 @@ function getAgeAtInauguration(presidentsArr) {
     return presi;
   });
 }
-console.log(getAgeAtInauguration(presidents))
+// OR
+// function getAgeAtInauguration(presidentsArr) {
+//   presidentsArr.map((president, id) => {
+//     presidentsArr[id].ageAtInauguration =
+//       president.tookOffice - president.birthYear;
+//   });
+//   return presidentsArr;
+// }
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
