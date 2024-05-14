@@ -490,3 +490,8 @@ function sortPresidentsByName(presidentsArr) {
 // function sortPresidentsByName(presidentsArr) {
 //   return presidentsArr.sort((a, b) => a.name.localeCompare(b.name));
 // }
+
+// or even
+// function sortPresidentsByName(presidentsArr) {
+//   return presidentsArr.sort((a, b) => a.name > b.name ? 1 : -1);
+// }
