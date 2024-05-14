@@ -479,6 +479,7 @@ function sortPresidentsByName(presidentsArr) {
   });
 }
 
+// one liner: 
 // function sortPresidentsByName(presidentsArr) {
-//   return presidentsArr.sort((a, b) => b.name - a.name);
+//   return presidentsArr.sort((a, b) => a.name.localeCompare(b.name));
 // }
