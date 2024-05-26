@@ -419,20 +419,35 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+/*function getNames(presidentsArr) {}
+const allNames = presidentsArr.map((num, i, wholeArray) => {}*/
 
-
-
+function getNames(presidentsArr) {
+return presidentsArr.map((onePres)=>onePres.name);
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const demoPres = presidentsArr.filter((onePresident) => {if(onePresident.party === "Democratic") {
+    return true
+  }
+})
+return demoPres
+}
 
+//refactored
 
+function getDemocraticPresidents(presidentsArr) {
 
 
 // Iteration 3 | Count Years in Office - reduce()
 function  countYearsInOffice(presidentsArr) {}
-
+const totalYearsInOffice = presidentsArr.reduce((acc, curr)=>{
+  const yearsCalc = leftOffice - tookOffice;
+  if (leftOffice === null) {
+    yearsCalc = acc;
+  } else
+})
 
 
 
