@@ -412,7 +412,7 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
 
