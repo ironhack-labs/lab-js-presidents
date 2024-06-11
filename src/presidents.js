@@ -419,47 +419,108 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+
+  // We iterate on every single presidente of the array and return every single president name;
+
+  return presidentsArr.map((currentPresident) => currentPresident.name)
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+
+  // We filter on every president in the presidents Array and we return an array of presidents which
+  // belonged to the "Democratic" party.
+
+   return presidentsArr.filter((currentPresident) => currentPresident.party === "Democratic"
+    )
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
 
+  // To count the years in the office of all the presidents, we need to reduce the presidents Arr
+  // and give it two parameters (TotalYears) and (president), if the current president hasn't left the
+  //Ofice, return the diference between the year they left the officen and when they took it, and
+  // add it to totalYears; we initialize the counting from 0.
 
+return presidentsArr.reduce((totalYears, president)=> {
+  if(president.leftOffice !== null){
+    totalYears += president.leftOffice - president.tookOffice;
+  }
+  return totalYears;
+}, 0);
 
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  //Sort in the presidents Array and order them from older to younger;
+
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear)
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
 
+// Search on the presidentsArr and add a new property named "ageAtInauguration" which will be the result
+// of the current president tookOffice - current president birthYear. Return which age did
+// any president  of the Array have when they took posession.
 
+return presidentsArr.map((currentPresident) => {
+currentPresident.ageAtInauguration = currentPresident.tookOffice - currentPresident.birthYear;
+return currentPresident;
+});
 
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
 
+  // filter each President, if the BirthYear of the president is greater than the argument passed, ignore it.
 
+return presidentsArr.filter((currentPresident) => currentPresident.birthYear > year);
 
+}
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
 
+  return presidentsArr.reduce((acc, president) => {
+    if (president.party === "Republican"){
+     acc++;
+    }
 
+return acc;
+}, 0)
 
+}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
 
+  return presidentsArr.sort((a, b) => {
+
+const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
+}
