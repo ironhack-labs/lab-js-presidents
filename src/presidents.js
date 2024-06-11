@@ -417,49 +417,111 @@ const presidents = [
 
 
 
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+/* The map() method returns a new array containing the values returned from the callback function */
+function getNames(presidentsArr) {
+  // Use map() to extract the 'name' from each president object
+  const presidentNames = presidentsArr.map(function(president){
+
+  return president.name; // Return the value to be included in the new array    
+  });
+  return presidentNames;
+
+} // compact version: return presidents.map(president => president.name);
+
+console.log(getNames(presidents));
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+/* The filter() method creates a new array containing the elements for which the callback function returns true */
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresidents = presidentsArr.filter(function(president){
+    return president.party === "Democratic";
+  });
+  return democraticPresidents;
+
+} // compact version: return presidentsArr.filter(president => president.party === "Democratic");
+console.log( getDemocraticPresidents(presidents) );
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+/* During each iteration, the reducer function receives the accumulated value and returns a new value to be used as the accumulated value for the next iteration. The reduce() method returns a single value, which is the final accumulated result */
+function  countYearsInOffice(presidentsArr) {
+
+  const totalYears = presidentsArr.reduce((accumulator, president) => {
+
+    // skip the president who is still in office
+    if (president.leftOffice != null) {
+ 
+       accumulator = accumulator + (president.leftOffice - president.tookOffice) ; // For each president, add its years served to the accumulator 
+    }
+    return accumulator; // Return the new accumulator value for the next iteration
+  }, 0); // The reduce() method takes two arguments: a callback function and the initial value.
+ return totalYears;
+
+  // OR array.reduce((accumulator, element, index, array) => {}, initialValue);
+
+}
+console.log( countYearsInOffice(presidents) );
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear ); // sort takes comparator function as a callback
+
+}
+console.log( sortPresidentsByBirthYear(presidents) );
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const newArray = presidentsArr.map((president) => {
+
+  president.ageAtInauguration = president.tookOffice -  president.birthYear;
+  return president;
+    
+  });
+  return newArray;
+
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.filter((president) => president.birthYear > year);
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicansCount = presidentsArr.reduce((republicansSum, president) => {
+    if (president.party === "Republican") {
+      republicansSum +=1;
+    }
+    return republicansSum;
+ }, 0);
+
+ return republicansCount;
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  return presidentsArr.sort((president1, president2) => president1.name.toLowerCase().localeCompare(president2.name.toLowerCase())); // Jasmine requirement: sort(), otherwise preferbale is toSorted()
+}
+console.log(sortPresidentsByBirthYear(presidents));
 
