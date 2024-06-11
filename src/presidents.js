@@ -463,6 +463,11 @@ function  countYearsInOffice(presidentsArr) {
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
 function sortPresidentsByBirthYear(presidentsArr) {
+  // both methods of sorting
+  const sortedArr = presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+  // log copy of array sorted
+  console.log(sortedArr);
+  // return original array modified to pass test
   return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
 }
 
@@ -512,6 +517,9 @@ function countRepublicanPresidents(presidentsArr) {
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {
   // set all letters to lowercase, use localeCompare()
+  const sortedArr = presidentsArr.toSorted((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  console.log(sortedArr);
+
   return presidentsArr.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 }
 
