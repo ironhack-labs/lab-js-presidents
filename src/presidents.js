@@ -419,47 +419,107 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const namesArr = presidentsArr.map(president => president.name);
+  return namesArr;
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const demArr = presidentsArr.filter(president => (president.party === "Democratic"));
+  return demArr;
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  
 
+  /* maybe better solution:
 
+  const totalYears = presidentsArr.filter(president => (president.leftOffice !== null))
+  .reduce((acc, president) => acc + (president.leftOffice - president.tookOffice), 0);
+
+  */
+
+  // solution to pass jasmine test
+  const totalYears = presidentsArr.reduce((acc, president) => {
+    if (!president.leftOffice) {
+      return acc;
+    }
+    else {
+      return acc + (president.leftOffice - president.tookOffice);
+    }
+  }, 0);
+
+  return totalYears;
+}
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  // both methods of sorting
+  const sortedArr = presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+  // log copy of array sorted
+  console.log(sortedArr);
+  // return original array modified to pass test
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+
+  const updatedArr = presidentsArr.map(president => {
+    president.ageAtInauguration = (president.tookOffice - president.birthYear);
+    return president;
+  });
+  return updatedArr;
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  const filteredArr = presidentsArr.filter(president => (president.birthYear > year));
+  return filteredArr;
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const totalRep = presidentsArr.reduce((acc, president) => {
+    if (president.party === "Republican") {
+      return acc + 1;
+    }
+    else {
+      return acc;
+    }
+  }, 0);
+
+  console.log(totalRep);
+  return totalRep;
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  // set all letters to lowercase, use localeCompare()
+  const sortedArr = presidentsArr.toSorted((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  console.log(sortedArr);
+
+  return presidentsArr.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+}
 
