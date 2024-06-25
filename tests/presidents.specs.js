@@ -1,5 +1,5 @@
 // Iteration 1
-describe("Iteration 1 | Names of All Presidents", () => {  
+describe("Iteration 1 | Names of All Presidents", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getNames).toEqual("function");
     expect(getNames.length).toEqual(1);
@@ -18,7 +18,7 @@ describe("Iteration 1 | Names of All Presidents", () => {
     getNames(testPresidents);
     expect(mapSpy).toHaveBeenCalled();
     expect(mapSpy).toHaveBeenCalledWith(jasmine.any(Function));
-  });  
+  });
 
   it("should return an array", () => {
     const testPresidents = [
@@ -32,7 +32,6 @@ describe("Iteration 1 | Names of All Presidents", () => {
 
     expect(result).toEqual(jasmine.any(Array));
   });
-
 
   it("should return an array of strings with the names of the presidents", () => {
     const testPresidents = [
@@ -50,13 +49,11 @@ describe("Iteration 1 | Names of All Presidents", () => {
       "John Quincy Adams",
       "George Washington",
     ]);
-
   });
 });
 
-
 // Iteration 2
-describe("Iteration 2 | Democratic Presidents", () => {  
+describe("Iteration 2 | Democratic Presidents", () => {
   it("should take 1 argument (presidents)", () => {
     expect(typeof getDemocraticPresidents).toEqual("function");
     expect(getDemocraticPresidents.length).toEqual(1);
@@ -107,7 +104,6 @@ describe("Iteration 2 | Democratic Presidents", () => {
   });
 });
 
-
 // Iteration 3
 describe("Iteration 3 | Count Years in Office", () => {
   it("should take 1 argument (presidents)", () => {
@@ -117,25 +113,57 @@ describe("Iteration 3 | Count Years in Office", () => {
 
   it("should use the 'reduce()' method to iterate over the presidents array passed as argument", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
     ];
 
     const reduceSpy = spyOn(testPresidents, "reduce").and.returnValue(10);
 
     const result = countYearsInOffice(testPresidents);
     expect(reduceSpy).toHaveBeenCalled();
-    expect(reduceSpy).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Number));
+    expect(reduceSpy).toHaveBeenCalledWith(
+      jasmine.any(Function),
+      jasmine.any(Number)
+    );
     expect(result).toEqual(10);
-    
   });
 
   it("should return a number", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 },
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 },
-      { name: "John Quincy Adams", party: "Federalist", tookOffice: 1797, leftOffice: 1801 },
-      { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 },
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      },
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      },
+      {
+        name: "John Quincy Adams",
+        party: "Federalist",
+        tookOffice: 1797,
+        leftOffice: 1801,
+      },
+      {
+        name: "George Washington",
+        party: null,
+        tookOffice: 1789,
+        leftOffice: 1797,
+      },
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -145,8 +173,18 @@ describe("Iteration 3 | Count Years in Office", () => {
 
   it("should return the total years that all the presidents served in office", () => {
     const testPresidents = [
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -156,10 +194,30 @@ describe("Iteration 3 | Count Years in Office", () => {
 
   it("should skip the presidents who are still in office (leftOffice is null)", () => {
     const testPresidents = [
-      { name: "George Washington", party: null, tookOffice: 1789, leftOffice: 1797 }, // 8 years
-      { name: "John F. Kennedy", party: "Democratic", tookOffice: 1961, leftOffice: 1963 }, // 2 years
-      { name: "Ronald Reagan", party: "Republican", tookOffice: 1981, leftOffice: 1989 }, // 8 years
-      { name: "Joseph Biden", party: "Democratic", tookOffice: 2021, leftOffice: null }, // still in office
+      {
+        name: "George Washington",
+        party: null,
+        tookOffice: 1789,
+        leftOffice: 1797,
+      }, // 8 years
+      {
+        name: "John F. Kennedy",
+        party: "Democratic",
+        tookOffice: 1961,
+        leftOffice: 1963,
+      }, // 2 years
+      {
+        name: "Ronald Reagan",
+        party: "Republican",
+        tookOffice: 1981,
+        leftOffice: 1989,
+      }, // 8 years
+      {
+        name: "Joseph Biden",
+        party: "Democratic",
+        tookOffice: 2021,
+        leftOffice: null,
+      }, // still in office
     ];
 
     const result = countYearsInOffice(testPresidents);
@@ -167,7 +225,6 @@ describe("Iteration 3 | Count Years in Office", () => {
     expect(result).toEqual(18);
   });
 });
-
 
 // Iteration 4
 describe("Iteration 4 | Sort Presidents by Birth Year", () => {
