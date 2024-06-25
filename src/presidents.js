@@ -419,47 +419,88 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
+function getNames(presidentsArr) {
+  return presidentsArr.map(e=>{
+    return e.name
+  })
+}
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter(e=>{
+    return e.party === "Democratic"
+  })
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((acc,e)=>{
+    if(typeof e.leftOffice === "number"){
+      return acc+ (e.leftOffice - e.tookOffice)
+
+    }else if(e.leftOffice === null){
+      return acc
+    }
+  },0)
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a ,b)=> a.birthYear-b.birthYear)
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map(e =>{
+    return {...e ,ageAtInauguration: e.tookOffice -e.birthYear}
+  })
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.filter(e=> e.birthYear > year)
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  return presidentsArr.reduce((acc,e)=>{
+    if(e.party === "Republican"){
+       return acc+= 1
+    }else{
+       return acc
+    }
+  },0)
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  return presidentsArr.sort((a,b)=>{
+    if(a.name < b.name){
+      return -1
+    }else if (a.name > b.name){
+      return 1
+    }else{
+      return 0
+    }
+  })
+}
 
