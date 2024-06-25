@@ -419,47 +419,104 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
 
+  return presidentsArr.map((nombre)=>{
+    return nombre.name
+  })
+  
+}
+
+console.log(getNames(presidents))
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
+  return presidentsArr.filter((presi)=>{
 
+    return presi.party === "Democratic"
+  })
+   
+}
+
+console.log(getDemocraticPresidents(presidents))
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
 
+
+  return presidentsArr.reduce((acc, element) => element.leftOffice ? acc+=(element.leftOffice -  element.tookOffice): acc  ,0)
+
+  // Operador ternario acto seguido de la condicion (element.leftOffice)
+  // 
+  }
+
+
+console.log( countYearsInOffice(presidents) );
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear)
+}
 
 
-
+console.log( sortPresidentsByBirthYear(presidents) );
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+
+  return presidentsArr.map( president =>({...president, ageAtInauguration: president.tookOffice - president.birthYear}) )
+
+  //Aqui hay una sintaxis de desestructuracion, ("...") esto es un 
+  // operador de propagacion, toma propiedades del objeto president
+  // y las copia en un objeto nuevo 
 
 
+}
+
+console.log( getAgeAtInauguration(presidents) );
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+
+  return presidentsArr.filter(president => president.birthYear > year)
+}
+
+
+console.log( getPresidentsBornAfter(presidents, 1945) );
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+
+return presidentsArr.reduce((count, president) => president.party === "Republican" ? count +1 : count, 0)
+
+//Usamos operador ternario -> Expresion condicional
+//Si repuplican.party es, sumamos (count +1) si no, devuelve contador sin cambios (count)
+}
+
+console.log( countRepublicanPresidents(presidents) );
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
 
+  return presidentsArr.sort((a, b) => a.name.localeCompare(b.name))
+
+  //localeCompare compara a y b, y devuelve negativo si a precede b
+  // 0 si son iguales o positivo si b precede de a
+}
+
+
+console.log( sortPresidentsByName(presidents) );
