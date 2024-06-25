@@ -412,54 +412,88 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidents) {
+  let presidentsArr = presidents.map((eachPresident) => {
+    return eachPresident.name;
+  });
+  return presidentsArr;
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democraticArr = presidentsArr.filter((eachDemocratic) => {
+    return eachDemocratic.party === "Democratic";
+  });
+  return democraticArr;
+}
 
+//Iteration 3 | Count Years in Office - reduce()
+function countYearsInOffice(presidentsArr) {
+  let totalSum = presidentsArr.reduce((acc, cadaElemento) => {
+    if (cadaElemento.leftOffice !== null) {
+      return acc + (cadaElemento.leftOffice - cadaElemento.tookOffice);
+    } else {
+      return acc;
+    }
+  }, 0);
 
-
-
-// Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+  return totalSum;
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  let ordenPresidentes = presidentsArr.sort((elem1, elem2) => {
+    if (elem1.birthYear > elem2.birthYear) {
+      return 1;
+    } else if (elem2.birthYear > elem1.birthYear) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return ordenPresidentes;
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
-
-
+function getAgeAtInauguration(presidentsArr) {
+  let edadArray = presidentsArr.map((eachPresident) => {
+    eachPresident.ageAtInauguration =
+      eachPresident.tookOffice - eachPresident.birthYear;
+    return eachPresident;
+  });
+  return edadArray;
+}
+console.log(presidents);
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-
-
+function getPresidentsBornAfter(presidentsArr, year) {
+  let filteredPresidents = presidentsArr.filter((eachPresident) => {
+    if (eachPresident.birthYear > year) {
+      return true;
+    } else {
+      false;
+    }
+  });
+  return filteredPresidents;
+}
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
-
-
-
+function countRepublicanPresidents(presidentsArr) {
+  let countRepPresis = presidentsArr.reduce((acc, cadaElem) => {
+    if (cadaElem.party) {
+      return acc + cadaElem.party;
+    } else {
+      return acc;
+    }
+    // count the total number of presidents who belonged to the Republican party.
+    // The function should then return a number representing the number of Republican presidents.
+    // The presidents who belonged to the Republican party have the party property set to "Republican".
+  }, 0);
+  return countRepPresis;
+}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {}
-
