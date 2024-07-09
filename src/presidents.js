@@ -419,33 +419,62 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
+function getNames(presidentsArr) {
+  const presidentNames = presidentsArr.map((eachPresident) => {
+    return eachPresident.name;
+  })
+  return presidentNames;
+}
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresidents = presidentsArr.filter((eachPresident) => {
+    if (eachPresident.party === "Democratic") {
+      return eachPresident;
+    };
+  })
+  return democraticPresidents;
+}
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
+function  countYearsInOffice(presidentsArr) {
+  const totalYearsInOffice = presidentsArr.reduce((acc, currValue) => {
+    if (currValue.leftOffice === null) {
+      return acc;
+    }
+    return acc + (currValue.leftOffice - currValue.tookOffice);
+  }, 0);
+  return totalYearsInOffice;
+}
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  const presidentsByBirthYear = presidentsArr.sort((oneBirthYear, nextBirthyear) => {
+    if (oneBirthYear.birthYear < nextBirthyear.birthYear) {
+      return -1;
+    } else if (oneBirthYear.birthYear === nextBirthyear.birthYear) {
+      return 0;
+    } else if (oneBirthYear.birthYear > nextBirthyear.birthYear) {
+      return 1;
+    }
+  });
+  return presidentsByBirthYear;
+}
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const presidentAge = presidentsArr.map((eachPresident) => {
+    return eachPresident.tookOffice - eachPresident.birthYear;
+  })
 
-
+  const addedAge = [];
+  presidentsArr.forEach(({id, name, birthYear, tookOffice, leftOffice, party}, i) => addedAge.push({id, name, birthYear, tookOffice, leftOffice, party, ageAtInauguration: presidentAge[i]}));
+  return addedAge;
+};
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
