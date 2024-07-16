@@ -417,28 +417,82 @@ const presidents = [
 
 
 
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+/*
 
+We will start our practice of JS array methods by working with the `map()` method.
+The `map()` method creates a new array populated with the results
+returned from the provided callback function for every element in the array.
+The callback function should return a value to be included in the new array.
+Implement the function `getNames()` that takes the **presidents array** as an argument.
+The function should **return a new array of strings containing only the names** of presidents. 
+You must use the `map()` method in your implementation to create the new array.
+*/
+function getNames(presidentsArr) {
+  const namesOfPresidents = presidentsArr.map(function(president) {
+    return president.name;
+  });
+  return namesOfPresidents;  
+}
 
-
-
+  
+  
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
 
+/*
+
+Next up, we will practice using the `filter()` method.
+The `filter()` method creates a new array containing the elements for which the callback function returns `true`.
+In other words, the `filter()` method creates a new array containing only the elements that pass the test implemented by the callback function.
+Implement the function `getDemocraticPresidents()` that takes the **presidents array** as an argument.
+The function should use the `filter()` method to create a new filtered array containing only the **presidents who belonged to the Democratic party**.
+The function should then return the new filtered array.
+The presidents who belonged to the Democratic party have the `party` property set to `"Democratic"`.
+*/
+
+function getDemocraticPresidents(presidentsArr) {
+  const presidentsBelongedToDemocraticParty = presidentsArr.filter(function (president) {
+    return president.party === "Democratic";
+  })
+  return presidentsBelongedToDemocraticParty;
+}
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+/*
+Next on our practice menu is the `reduce()` method.
+The `reduce()` method executes a reducer function (callback) for each value of an array.
+During each iteration, the reducer function receives the accumulated value and 
+returns a new value to be used as the accumulated value for the next iteration.
+The `reduce()` method returns a single value, which is the final accumulated result.
+Implement the function `countYearsInOffice()` that takes the **presidents array** as an argument.
+The function should use the `reduce()` method to count the total years that all the presidents served in office (leftOffice - tookOffice).
+The function should then return a number representing the total years.
+**Important:** You should skip the president who is still in office (the president with the `leftOffice` property set to `null`) and not include them in the total years.
+*/
+function countYearsInOffice(presidentsArr) {
+  const yearsThatPresidentsServedInOffice = presidentsArr.reduce((accumulator, president) => {
+    if (president.leftOffice != null) {
+      return accumulator + (president.leftOffice - president.tookOffice);
+  }
+  return accumulator;
+  }, 0);
+  
+  return yearsThatPresidentsServedInOffice;
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const presidentsByBirthYear = presidentsArr.sort(function (a, b) {
+    return a.birthYear - b.birthYear;
+  });
 
+  return presidentsByBirthYear;
+}
 
 
 
