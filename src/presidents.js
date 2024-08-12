@@ -419,47 +419,79 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidents) {
+  return presidents.map(function (presidents) {
+    return presidents.name;
+  })
+}
+
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidents) {
+  return presidents.filter(function (presidents) {
+    if (presidents.party === "Democratic") {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidents) {
+  return presidents.reduce(function (acc, president) {
+    if (president.leftOffice !== null) {
+      const inOffice = president.leftOffice - president.tookOffice;
+      return acc + inOffice;
+    }
+    return acc;
+  }, 0);
+};
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidents) {
+  return presidents.sort(function (a, b) {
+    if (a.birthYear < b.birthYear) { return -1 };
+    if (a.birthYear > b.birthYear) { return 1 };
+    if (a.birthYear === b.birthYear) { return 0 };
+  });
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidents.map(function (presidents) {
+    presidents.ageAtInauguration = presidents.tookOffice - presidents.birthYear;
+    return presidents;
+  });
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) { }
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) { }
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) { }
 
