@@ -419,47 +419,140 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  let arrPresNames = presidentsArr.map( (president) =>{
+    return president.name
+  });
+  return arrPresNames;
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  //return a new array containing only the 
+  //elements that pass the test implemented by the callback function.
+  let arrDemocPresidents = presidentsArr.filter((presidente) =>{
+    return presidente.party === `Democratic`
+  });
+  return arrDemocPresidents
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  //reduce() method to count the total years that all the presidents served in office (leftOffice - tookOffice)
+  //return a number representing the total years.
+  //campos tookOffice,leftOffice
+
+  let reducedCount = presidentsArr.reduce((acc, president) =>{
+    if(president.leftOffice === null){
+      return acc
+    } else {
+      return acc + (president.leftOffice - president.tookOffice)
+    }
+    
+  }, 0);
+  return reducedCount
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  //sort() method to sort the presidents array by birth year, from oldest to youngest.
+  //birthYear is a number // lowest number first 
+  //should then return the sorted array of presidents.
+   /* let copyOfPresidentsArr = presidentsArr.slice(0);
+   console.log(copyOfPresidentsArr); */
+  presidentsArr.sort((presidente1, presidente2) => {
+    if(presidente1.birthYear < presidente2.birthYear){
+      return -1
+    } else if(presidente1.birthYear > presidente2.birthYear) {
+      return 1
+    } else {
+      return 0
+    }
+  });
+  return presidentsArr
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  /* use the map() method to create a new array of updated president objects, 
+  with a new property ageAtInauguration containing the age of each president when they took office 
+  should then return the new array containing the updated president objects, 
+  where each object contains the new property ageAtInauguration */
+
+  let newArrayPresidentsWithInauguration = presidentsArr.map( (president) => {
+    president.ageAtInauguration = president.tookOffice - president.birthYear
+    
+    return president
+    });
+
+  return newArrayPresidentsWithInauguration
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  /* should use the filter() method to create a new array containing 
+  only the presidents who were born after the year provided as an argument. 
+  should then return the new filtered array containing only the presidents 
+  who were born after the specified year.
+  */
+
+  let presidentsBornAfterArr = presidentsArr.filter((presidente) => {
+    return presidente.birthYear > year
+  });
+
+  return presidentsBornAfterArr
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  /* should use the reduce() method to count the total number of presidents 
+  who belonged to the Republican party 
+  should then return a number representing the number of Republican presidents.
+  */
+
+  let numberRepublicanPresidents = presidentsArr.reduce((acc, president)=>{
+
+    if(president.party === `Republican`){
+      return ++acc
+    } else {
+      return acc
+    }
+
+  }, 0);
+
+  return numberRepublicanPresidents
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+
+/* should use the sort() method to sort the presidents array alphabetically by name, in ascending order. 
+should then return the sorted array of presidents. */
+
+function sortPresidentsByName(presidentsArr) {
+presidentsArr.sort( (presidente1, presidente2) => {
+  return presidente1.name.localeCompare(presidente2.name);
+})
+   return presidentsArr
+}
 
