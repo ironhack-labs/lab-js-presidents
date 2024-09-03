@@ -419,33 +419,71 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
+function getNames(presidentsArr) {
+  let presidentNamesArr = presidentsArr.map((eachPresident) =>{
+    return eachPresident.name
+  })
+  return presidentNamesArr
+}
+console.log( getNames(presidents) );
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
+function getDemocraticPresidents(presidentsArr) {
+  let democraticPresidents = presidentsArr.filter((eachPresident) =>{
+    if (eachPresident.party === "Democratic"){
+      return true
+    }else{
+      return false
+    }
+  })
+  return democraticPresidents
+}
+console.log( getDemocraticPresidents(presidents) );
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
+function  countYearsInOffice(presidentsArr) {
+let totalYears = presidentsArr.reduce((acc, eachPresident) =>{
+  if (eachPresident.leftOffice === null){
+    return acc
+  }
+  return acc + (eachPresident.leftOffice - eachPresident.tookOffice) 
+}, 0)
+  return totalYears
+}
+console.log( countYearsInOffice(presidents) );
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  presidentsArr.sort ((eachPresident1, eachPresident2 )=>{
+    if (eachPresident1.birthYear < eachPresident2.birthYear){
+      return -1
+    }else if (eachPresident2.birthYear < eachPresident1.birthYear){
+      return 1
+    }else {
+      return 0
+    }
+  }) 
+  return presidentsArr
+}
 
-
+console.log( sortPresidentsByBirthYear(presidents) );
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
+function getAgeAtInauguration(presidentsArr) {
+  let ageAtInauguration = presidentsArr.map ((eachPresident) => {
+    eachPresident.ageAtInauguration = eachPresident.tookOffice - eachPresident.birthYear
+    
+      return eachPresident
+  })
+  console.log (ageAtInauguration)
+  return ageAtInauguration
+}
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
