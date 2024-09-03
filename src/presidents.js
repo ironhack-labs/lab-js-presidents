@@ -416,50 +416,122 @@ const presidents = [
 ];
 
 
+/*
+    It is possible for certain properties, such as party and leftOffice, 
+    to have a value of null. For instance, if a president was not affiliated 
+    with any political party, the party property would be null. Similarly, 
+    if a president is still in office, the leftOffice property would be null.
+*/
 
-
+// ________________________________________________________________________>>>
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  let presidentsNameArray = presidentsArr.map((presidents) => {
+    return presidents.name;
+  });
 
+  return presidentsNameArray;
+}
 
+console.log(getNames(presidents));
 
-
+// ________________________________________________________________________>>>
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democraticPresidents = presidentsArr.filter((eachPresident) => {
+    return eachPresident.party === "Democratic"
+  })
 
+  return democraticPresidents
+}
 
+console.log(getDemocraticPresidents(presidents))
 
-
+// ________________________________________________________________________>>>
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  let totalYearsInOffice = presidentsArr.reduce((acc, eachPresident) => {
+    if (eachPresident.leftOffice != null) {
+      return acc + (eachPresident.leftOffice - eachPresident.tookOffice);
+    } else {
+      return acc;
+    }
+  }, 0);
 
+  return totalYearsInOffice;
+}
 
+console.log(countYearsInOffice(presidents));
 
-
+// ________________________________________________________________________>>>
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  let presidentsByBirthday = presidentsArr.sort((president1, president2) => {
+    if (president1.birthYear > president2.birthYear) {
+      return 1
+    } else if (president1.birthYear < president2.birthYear) {
+      return -1
+    } else {
+      return 0
+    }
+  })
 
+  return presidentsByBirthday
+}
 
+console.log(sortPresidentsByBirthYear(presidents));
 
-
+// ________________________________________________________________________>>>
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  let newPresidentsArrayAgeAtInauguration = presidentsArr.map((president) => {
+    president.ageAtInauguration = (president.tookOffice - president.birthYear);
+    return president
+  })
 
+  return newPresidentsArrayAgeAtInauguration
+}
 
+console.log(getAgeAtInauguration(presidents));
 
-
+// ________________________________________________________________________>>>
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  let presidentsBornAfterAYear = presidentsArr.filter((president) => {
+    return president.birthYear > year
+  })
+    
+  return presidentsBornAfterAYear
+}
 
+console.log(getPresidentsBornAfter(presidents, 1945));
 
-
-
+// ________________________________________________________________________>>>
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  let republicanPresidents = presidentsArr.reduce((acc, president) => {
+    if (president.party === "Republican") {
+      return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
 
+  return republicanPresidents;
+}
 
+console.log(countRepublicanPresidents(presidents));
 
-
+// ________________________________________________________________________>>>
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  let presidentsAlphabeticallyOrdered = presidentsArr.sort(
+    (president1, president2) => {
+      return president1.name.localeCompare(president2.name); // <-- localeCompare used
+    }
+  );
 
+  return presidentsAlphabeticallyOrdered;
+}
+
+console.log(sortPresidentsByName(presidents));
