@@ -506,11 +506,32 @@ function getPresidentsBornAfter(presidentsArr, year) {
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) { }
+function countRepublicanPresidents(presidentsArr) {
+  let totalRepublicanPresidents = presidentsArr.reduce((acc, president) => {
+    if (president !== undefined && president.party === "Republican") {
+      return acc + 1
+    } else {
+      return acc
+    }
+  },0)
+  return totalRepublicanPresidents
+}
 
-
+//console.log( countRepublicanPresidents(presidents) );
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) { }
+function sortPresidentsByName(presidentsArr) {
+  let orderedByName = presidentsArr.sort((president1, president2) => {
+    if (president1.name < president2.name) {
+      return -1
+    } else if (president2.name < president1.name) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+  return orderedByName
+}
 
+//console.log( sortPresidentsByName(presidents) );
