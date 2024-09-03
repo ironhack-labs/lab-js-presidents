@@ -419,31 +419,73 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  let namesPresidents = presidentsArr.map((presidents) => {
+    return presidents.name;
+  });
+  return namesPresidents;
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democraticPresidents = presidentsArr.filter((myPresiDemoc) =>{
+    if(myPresiDemoc.party === "Democratic"){
+      return true;
+    }else{
+      return false;
+    }
+  })
+  return democraticPresidents;
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+
+  let totalYears = presidentsArr.reduce((acumulador,president) => {
+    if(president.leftOffice === null){
+      return acumulador
+    }
+    let yearsInOffice = president.leftOffice - president.tookOffice
+    return yearsInOffice + acumulador
+  },0)
+  return totalYears
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  let yearsOrdened = presidentsArr.sort((president1,president2) => {
+    if(president1.birthYear < president2.birthYear){
+        return -1 // si el numero es negativo coloca el primero antes
+    }else if(president2.birthYear < president1.birthYear){
+        return 1 // si el numero es positivo coloca el segundo antes
+    }else{
+        return 0 // si es 0 no cambia el orden
+    }
+  })
+  return yearsOrdened
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  let newDescripcion = presidentsArr.map((president) => {
+    
+    president.ageAtInauguration = president.tookOffice - president.birthYear
+    return president.ageAtInauguration
+  })
+  return newDescripcion
+}
 
 
 
