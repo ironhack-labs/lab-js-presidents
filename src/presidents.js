@@ -419,25 +419,77 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+
+  const presidenteNombre = presidentsArr.map(eachElement =>{
+
+    return eachElement.name
+
+  })
+
+  return presidenteNombre
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+
+  const perteneceDemocratico = presidentsArr.filter(eachElement=>{
+
+
+    if(eachElement.party==="Democratic"){
+      return true
+    }else{
+      return false
+    }
+
+  })
+  return perteneceDemocratico
+
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+  function countYearsInOffice(presidents) {
+  
+    
+
+  const aniosTrabajando = presidents.reduce((acc, eachElement) => {
+
+    if(eachElement.leftOffice==null){
+
+      return acc
+    }
+    const leftYear = eachElement.leftOffice
+    const yearsInOffice = leftYear - eachElement.tookOffice // Calcula los años en el cargo
+
+    return acc + yearsInOffice // Suma los años al acumulador
+  }, 0)
+
+  return aniosTrabajando
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+
+  function sortPresidentsByBirthYear(presidents) {
+    // Sort the array in place using a compare function
+    presidents.sort((a, b) => a.birthYear - b.birthYear);
+    
+    // Return the sorted array
+    return presidents;
+  }
+  
+  // Example usage
+  const sortedPresidents = sortPresidentsByBirthYear(presidents);
+  console.log(sortedPresidents);
+
 
 
 
