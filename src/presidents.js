@@ -419,37 +419,65 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const presidentNames = presidentsArr.map((e) => e.name);
+  return presidentNames;
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresidents = presidentsArr.filter(
+    (e) => e.party === "Democratic"
+  );
+  return democraticPresidents;
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const finishedOffice = presidentsArr.filter((e) => e.leftOffice !== null);
+
+  const yearsLeftOffice = finishedOffice.reduce(
+    (acc, curr) => acc + curr.leftOffice,
+    0
+  );
+  const yearsTookOffice = finishedOffice.reduce(
+    (acc, curr) => acc + curr.tookOffice,
+    0
+  );
+  return yearsLeftOffice - yearsTookOffice;
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const presidentsByAge = presidentsArr.sort((a,b) => a.birthYear - b.birthYear)
+  return presidentsByAge
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
+function getAgeAtInauguration(presidentsArr) {
+presidentsArr.map((e) => e.ageAtInauguration = e.tookOffice - e.birthYear)
+return presidentsArr
+}
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  let presidentsBornAfter = presidentsArr.filter((e) => e.birthYear > year)
+  return presidentsBornAfter
+}
 
 
 
@@ -457,6 +485,14 @@ function getPresidentsBornAfter(presidentsArr, year) {}
 // Bonus: Iteration 7 | Count Republican Presidents
 function countRepublicanPresidents(presidentsArr) {}
 
+
+//Calculated this using filter instead after a bracket nightmare with reduce and an if statement
+function countRepublicanPresidents(presidentsArr) {
+  let republicanPresidents = presidentsArr.filter(
+    (e) => e.party == "Republican"
+  );
+  return republicanPresidents.length;
+}
 
 
 
