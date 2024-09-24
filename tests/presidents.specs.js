@@ -163,7 +163,6 @@ describe("Iteration 3 | Count Years in Office", () => {
     ];
 
     const result = countYearsInOffice(testPresidents);
-
     expect(result).toEqual(18);
   });
 });
