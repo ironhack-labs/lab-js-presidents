@@ -415,38 +415,60 @@ const presidents = [
   }
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  return presidentsArr.map((president) => {
+    return president.name;
+  });
+}
+//console.log("President names:", getNames(presidents));
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+return presidentsArr.filter((president)=>
+president.party === "Democratic");
+//const filteredPresidents = presidentsArr.filter((president) => {
+//return president.party === "Democratic"
+}
+   //.map((onePresident)=>{
+   // return onePresident.name;
+   // });
+    //console.log("filtered Democratic Presidents:", filteredPresidents);
+//}
+//getDemocraticPresidents(presidents);
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
 
+function countYearsInOffice(presidents) {
+  return presidents.reduce((total, president) => {
+    // Check if the president has left office (leftOffice is not null)
+    if (president.leftOffice !== null) {
+      // Add the years served (leftOffice - tookOffice) to the total
+      return total + (president.leftOffice - president.tookOffice);
+    }
+    // If president is still in office, do not add anything to the total
+    return total;
+  }, 0); // Initialize total to 0
+}
 
+// Example usage (assuming you have an array 'presidents' defined elsewhere)
+console.log(countYearsInOffice(presidents)); // Expected Output: 232
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+// Function to sort presidents by birth year (oldest to youngest)
+function sortPresidentsByBirthYear(presidents) {
+  return presidents.sort((a, b) => a.birthYear - b.birthYear);
+}
 
+// Example usage: Call the function with the presidents array
+const sortedPresidents = sortPresidentsByBirthYear(presidents);
 
-
+// Output the sorted array of presidents
+console.log("Presidents sorted by birth year (oldest to youngest):", sortedPresidents);
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {}
-
-
-
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {}
