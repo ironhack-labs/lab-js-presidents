@@ -101,6 +101,7 @@ xdescribe("BONUS", () => {
     });
   });
 
+  
   // Bonus: Iteration 6
   describe("Bonus: Iteration 6 | Presidents Born After", () => {
     it("should take 2 arguments (presidents, year)", () => {
@@ -157,6 +158,15 @@ xdescribe("BONUS", () => {
     });
   });
 
+  function getAgeAtInauguration(presidents) {
+    return presidents.map(president => {
+      return {
+        ...president, 
+        ageAtInauguration: president.tookOffice - president.birthYear 
+      };
+    });
+  }
+
 
   // Bonus: Iteration 7
   describe("Bonus: Iteration 7 | Count Republican Presidents", () => {
@@ -210,6 +220,12 @@ xdescribe("BONUS", () => {
       expect(result).toEqual(4);
     });
   });
+
+  function countRepublicanPresidents(presidents) {
+    return presidents.reduce((count, president) => {
+      return president.party === "Republican" ? count + 1 : count;
+    }, 0);
+  }
 
 
   // Bonus: Iteration 8
@@ -273,3 +289,10 @@ xdescribe("BONUS", () => {
     });
   });
 });
+
+function sortPresidentsByName(presidents) {
+  return presidents.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+}
+

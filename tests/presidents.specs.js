@@ -54,6 +54,9 @@ describe("Iteration 1 | Names of All Presidents", () => {
   });
 });
 
+function getNames(presidents) {
+  return presidents.map(president => president.name);
+}
 
 // Iteration 2
 describe("Iteration 2 | Democratic Presidents", () => {  
@@ -106,6 +109,10 @@ describe("Iteration 2 | Democratic Presidents", () => {
     ]);
   });
 });
+
+function getDemocraticPresidents(presidents) {
+  return presidents.filter(president => president.party === "Democratic");
+}
 
 
 // Iteration 3
@@ -168,6 +175,15 @@ describe("Iteration 3 | Count Years in Office", () => {
   });
 });
 
+function countYearsInOffice(presidents) {
+  return presidents.reduce((totalYears, president) => {
+    if (president.leftOffice !== null) {
+      return totalYears + (president.leftOffice - president.tookOffice);
+    }
+    return totalYears;
+  }, 0);
+}
+
 
 // Iteration 4
 describe("Iteration 4 | Sort Presidents by Birth Year", () => {
@@ -222,3 +238,9 @@ describe("Iteration 4 | Sort Presidents by Birth Year", () => {
     ]);
   });
 });
+
+function sortPresidentsByBirthYear(presidents) {
+  return presidents.sort((a, b) => {
+    return a.birthYear - b.birthYear;
+  });
+}
