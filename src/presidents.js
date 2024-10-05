@@ -418,48 +418,114 @@ const presidents = [
 
 
 
-// Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+// Iteration 1 | Names of All Presidents - `map()` -  // Using the map() method to create an array of president names
+function getNames(presidentsArr) {
 
+  return presidentsArr.map(president => president.name);
+}
+
+console.log(getNames(presidentsArr)); // Output: [ "George Washington", "John Adams", "Thomas Jefferson" ]
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
+  return presidentsArr.filter(president => president.party === "Democratic");
+}
+
+console.log(getDemocraticPresidents(presidentsArr));
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((totalYears, president) => {
+    // Si el presidente aún está en el cargo (leftOffice es null), lo ignoramos
+    if (president.leftOffice === null) {
+      return totalYears;
+    }
+    // Calculamos los años que estuvo en el cargo y los sumamos al total
+    return totalYears + (president.leftOffice - president.tookOffice);
+  }, 0); // Iniciamos el acumulador en 0
+}
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    return a.birthYear - b.birthYear; // Ordenar de más antiguo a más reciente
+  });
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map(president => {
+    // Calculamos la edad al momento de tomar el cargo
+    const ageAtInauguration = president.tookOffice - president.birthYear;
+    
+    // Retornamos un nuevo objeto con todas las propiedades del presidente y la nueva propiedad ageAtInauguration
+    return {
+      ...president, // Copiamos todas las propiedades originales del presidente con el spread operator
+      ageAtInauguration // Agregamos la nueva propiedad
+    };
+  });
+}
+
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.filter(president => president.birthYear > year);
+}
+
+console.log(getPresidentsBornAfter(presidentsArr, 1945)); 
+
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  return presidentsArr.reduce((count, president) => {
+    // Si el partido del presidente es "Republican", incrementamos el contador
+    if (president.party === "Republican") {
+      return count + 1;
+    }
+    // Si no es republicano, retornamos el contador sin modificar
+    return count;
+  }, 0); // Iniciamos el contador en 0
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    // Comparamos los nombres de los presidentes de manera alfabética
+    if (a.name < b.name) {
+      return -1; // a viene antes que b
+    }
+    if (a.name > b.name) {
+      return 1; // a viene después que b
+    }
+    return 0; // son iguales
+  });
+}
+
+// esta solucion es mas elegante
+function sortPresidentsByName(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+}
+console.log(sortPresidentsByName(presidents));
+
 
