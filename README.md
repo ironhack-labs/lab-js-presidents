@@ -260,7 +260,7 @@ describe("BONUS", () => {
 ### Bonus: Iteration 5 | Age at Inauguration - `map()`
 
 Implement the function `getAgeAtInauguration()` that takes the **presidents array** as an argument.
-The function should use the `map()` method to create a new array of updated president objects, with a new property `ageAtInauguration` containing the age of each president when they took office. The function should then return the new array containing the updated president objects, where each object contains the new property `ageAtInauguration`.
+The function should use the `map()` method to create a new array of updated president objects, with a new property `n` containing the age of each president when they took office. The function should then return the new array containing the updated president objects, where each object contains the new property `ageAtInauguration`.
 
 <br>
 
@@ -277,7 +277,7 @@ console.log( getAgeAtInauguration(presidents) );
   { id: 2, name: "John Quincy Adams", /*  ...  */ ageAtInauguration: 62 },
   { id: 3, name: "Thomas Jefferson", /*  ...  */ ageAtInauguration: 58 },
   // ...
-  // ...
+  // ...ageAtInauguratio
 ];
 ```
 
