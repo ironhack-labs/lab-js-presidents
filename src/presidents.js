@@ -419,47 +419,113 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
+function getNames(presidentsArr) {
+  const presidentNames = presidentsArr.map((president)=> {
+    return president.name; //here only the each value to be added in the new array is returned
+  });
+  return presidentNames; //here the new array is also returned (outside the callback function)
+}
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresident = presidentsArr.filter((president) => {
+    return president.party === "Democratic"; //the condition the element president (object) of the array must met in order to be put in the array. The hole object is put in the array if the condition is met. This is why we need to return true or false
+  });
+  return democraticPresident; //the list of array with all objects (presidents) whose party meets the condition in the arrow function
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const sumYears = presidentsArr.reduce(function (accValue, elem) {
+    if (elem.leftOffice !== null) { 
+  let yearsOfOnePresident = accValue + elem.leftOffice - elem.tookOffice;
+  return yearsOfOnePresident;
+};
+return accValue;
+}, 0);
+return sumYears; //if I don't add this no value is returned and updated for the accValue
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const oldestToYoungest = presidentsArr.sort((president1, president2) => president1.birthYear-president2.birthYear);
+  return oldestToYoungest;
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+      /* const presidentsArrInauguration = presidentsArr.map((president) => {
+      president.ageAtInauguration = president.tookOffice - president.birthYear; // Aggiungi la proprietà all'oggetto esistente
+      return president; // (oppure return president.ageAtInauguration = president.tookOffice-president.birthYear;)
+     });
+    return presidentsArrInauguration;
+   } */ //This changes the original presidents in the original array, too
+
+   const presidentsArrInauguration = presidentsArr.map((president) => {
+    return {
+      id: president.id,
+      name: president.name,
+      birthYear: president.birthYear,
+      deathYear: president.deathYear,
+      tookOffice: president.tookOffice,
+      leftOffice: president.leftOffice,
+      party: president.party,
+      ageAtInauguration: president.tookOffice - president.birthYear 
+    };
+  });
+  return presidentsArrInauguration;
+}
+
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-
+function getPresidentsBornAfter(presidentsArr, year) {
+  const presidentsBornAfter = presidentsArr.filter((president) => {
+    return president.birthYear > year; 
+  });
+  return presidentsBornAfter; 
+}
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicanPresidents = presidentsArr.reduce(function (accValue, elem) {
+    if (elem.party === "Republican") { 
+  accValue += 1;
+};
+return accValue;
+}, 0);
+return republicanPresidents; 
+ }
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  /* FIRST OPTION
+    presidentsArr.sort(function (a, b) {
+    if (a.name < b.name) return -1; 
+    if (a.name > b.name) return 1; 
+    if (a.name === b.name) return 0;
+  });
+  return presidentsArr;
+} */
+  presidentsArr.sort((a, b) => a.name.localeCompare(b.name)); 
+  //presidentsArr.sort((a, b) => a.name < b.name); not possible as "<" returns a boolean and not a number
+  //a-b not possible either, as - does not work with strings.
+  return presidentsArr;
+ }
 
