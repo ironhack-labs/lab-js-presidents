@@ -1,4 +1,4 @@
-xdescribe("BONUS", () => {
+describe("BONUS", () => {
   // Bonus: Iteration 5
   describe("Bonus: Iteration 5 | Age at Inauguration", () => {
     it("should take 1 argument (presidents)", () => {
@@ -62,31 +62,20 @@ xdescribe("BONUS", () => {
     it("should return an array of objects with the new property 'ageAtInauguration'", () => {
       testPresidents = [
         {
-          id: 35,
-          name: "John F. Kennedy",
-          birthYear: 1917,
-          deathYear: 1963,
-          tookOffice: 1961,
-          leftOffice: 1963,
-          party: "Democratic",
+          name: "George Washington",
+          tookOffice: 1789,
+          leftOffice: 1797,
+          birthYear: 1732,
+          deathYear: 1799,
+          party: "No Party",
         },
         {
-          id: 36,
-          name: "Lyndon B. Johnson",
-          birthYear: 1908,
-          deathYear: 1973,
-          tookOffice: 1963,
-          leftOffice: 1969,
-          party: "Democratic",
-        },
-        {
-          id: 37,
-          name: "Richard Nixon",
-          birthYear: 1913,
-          deathYear: 1994,
-          tookOffice: 1969,
-          leftOffice: 1974,
-          party: "Republican",
+          name: "John Adams",
+          tookOffice: 1797,
+          leftOffice: 1801,
+          birthYear: 1735,
+          deathYear: 1826,
+          party: "Federalist",
         },
       ];
 
