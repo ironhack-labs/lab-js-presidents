@@ -418,32 +418,120 @@ const presidents = [
 
 
 
-// Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+/* Iteration 1 | Names of All Presidents - `map()`
+
+We will start our practice of JS array methods by working with the map() method.
+
+The map() method creates a new array populated with the results returned from the provided callback function for every element in the array. The callback function should return a value to be included in the new array.
+
+
+Implement the function getNames() that takes the presidents array as an argument. The function should return a new array of strings containing only the names of presidents.
+
+You must use the map() method in your implementation to create the new array.
+
+*/
+
+function getNames(presidentsArr) {
+
+  let presidentsNames = presidentsArr.map((president) => president.name); 
+
+  return presidentsNames; 
+
+}
+
+getNames(presidents); 
 
 
 
+/* Iteration 2 | Democratic Presidents - `filter()`
 
-// Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
+Next up, we will practice using the filter() method. The filter() method creates a new array containing the elements for which the callback function returns true. In other words, the filter() method creates a new array containing only the elements that pass the test implemented by the callback function.
 
 
-// Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+Implement the function getDemocraticPresidents() that takes the presidents array as an argument. The function should use the filter() method to create a new filtered array containing only the presidents who belonged to the Democratic party. The function should then return the new filtered array.
+
+The presidents who belonged to the Democratic party have the party property set to "Democratic".
+
+*/
+
+
+function getDemocraticPresidents(presidentsArr) {
+
+  let democraticsPotus = presidentsArr.filter((president) => president.party === "Democratic"); 
+
+  return democraticsPotus; 
+
+}
+
+getDemocraticPresidents(presidents);
 
 
 
+/* Iteration 3 | Count Years in Office - reduce()
 
-// Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+Next on our practice menu is the reduce() method.
+
+The reduce() method executes a reducer function (callback) for each value of an array. During each iteration, the reducer function receives the accumulated value and returns a new value to be used as the accumulated value for the next iteration. The reduce() method returns a single value, which is the final accumulated result.
 
 
+Implement the function countYearsInOffice() that takes the presidents array as an argument. The function should use the reduce() method to count the total years that all the presidents served in office (leftOffice - tookOffice). The function should then return a number representing the total years.
+
+Important: You should skip the president who is still in office (the president with the leftOffice property set to null) and not include them in the total years.
+
+*/
+
+function  countYearsInOffice(presidentsArr) {
+
+ 
+
+  return presidentsArr.reduce((totalYearsInOffice,  president) => {
+
+    if (president.leftOffice !== null){ //Con esto tenemos a todos los presidentes menos al actual. 
+
+     return totalYearsInOffice + (president.leftOffice - president.tookOffice)
+
+    }
+    
+    return totalYearsInOffice;
+    }, 0); 
 
 
-// Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+}
+
+countYearsInOffice(presidents); 
+
+
+/* Iteration 4 | Sort Presidents by Birth Year - `sort()`
+
+For the final few mandatory iterations, we will practice using the sort() method.
+
+The sort() method is used to sort the elements of an array in place. This means the original array is mutated, and the sorted elements are rearranged within the same array. To sort an array, we need to pass a compare function to the sort() method with the conditional logic that returns -1, 1, or 0 and specifies how to sort the elements.
+
+
+Implement the function sortPresidentsByBirthYear() that takes the presidents array as an argument. The function should use the sort() method to sort the presidents array by birth year, from oldest to youngest. The function should then return the sorted array of presidents.
+
+*/
+function sortPresidentsByBirthYear(presidents) {
+  return presidents.sort((presidents1, presidents2) => {
+  return presidents1.birthYear - presidents2.birthYear; 
+  })
+}
+
+ console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+
+
+/* Bonus: Iteration 5 | Age at Inauguration - `map()`
+
+Implement the function getAgeAtInauguration() that takes the presidents array as an argument. The function should use the map() method to create a new array of updated president objects, with a new property ageAtInauguration containing the age of each president when they took office. The function should then return the new array containing the updated president objects, where each object contains the new property ageAtInauguration.
+
+*/
+
+function getAgeAtInauguration(presidentsArr) {
+
+  let newArray
+
+
+}
 
 
 
