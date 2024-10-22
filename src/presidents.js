@@ -417,27 +417,57 @@ const presidents = [
 
 
 
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  // console.log ('El array de presidentes es' , presidentsArr)
+  const presidentsList = presidentsArr.map((eachPresident => {
+    return eachPresident.name
+  }))
+  // console.log ('La lista de presidentes es ', presidentsList)
+  return presidentsList
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  // console.log ('El array de presidentes es' , presidentsArr)
+  const democraticPresidentsList = presidentsArr.filter(eachPresident => {
+    return eachPresident.party === "Democratic"
+  })
+
+  // console.log ('La lista de presidentes democráticos es ', democraticPresidentsList)
+  return democraticPresidentsList
+
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  // console.log ('El array de presidentes es' , presidentsArr)
+  const sumYearsinOffice = presidentsArr.reduce((acc, eachPresident) => {
+    if (eachPresident.leftOffice === null){
+      return acc
+    }
+    return acc + (eachPresident.leftOffice - eachPresident.tookOffice)
+  }, 0)
+  // console.log ('La suma es ', sumYearsinOffice)
+  return sumYearsinOffice
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  // console.log ('El array de presidentes es' , presidentsArr, 'y los años de nacimiento son', presidentsArr.map(president => president.birthYear))
+  presidentsArr.sort((firstPresident, secondPresident) => firstPresident.birthYear - secondPresident.birthYear)
+  // console.log ('Después ---> el array de presidentes es' , presidentsArr, 'y los años de nacimiento son', presidentsArr.map(president => president.birthYear))
+  return presidentsArr
+}
 
 
 
