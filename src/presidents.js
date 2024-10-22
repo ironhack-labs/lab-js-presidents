@@ -419,26 +419,45 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+let presidentsNames = presidentsArr.map(president => president.name)
+return presidentsNames
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democraticPresidents = presidentsArr.filter(eachPresident => {
+    return eachPresident.party === 'Democratic'
+  })
+  return democraticPresidents 
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+
+  let totalYearsInOffice = presidentsArr.reduce((acc, eachPresident) => {
+    let restYears = eachPresident.leftOffice - eachPresident.tookOffice
+    return acc + restYears 
+  }, 0)
+
+  return totalYearsInOffice
+  
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a,b) => a.birthYear - b.birthYear)
+}
+// de menos a mayor seria b-a, pero como son la misma propiedad da igual el orden?
 
 
 
