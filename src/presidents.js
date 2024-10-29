@@ -412,54 +412,92 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  return presidentsArr.map((presidents) => {
+    return presidents.name;
+    // you have to return to make it work
+  });
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter((president) => president.party === "Democratic")
+};
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((acc, curr) => {
+    if (curr.leftOffice === null) {
+      return acc;
+      /*Skip Logic with return acc;: 
+      When curr.leftOffice is null (meaning the president is still in office),
+       we simply return acc; without adding anything to it.
+       By returning acc unchanged, we ignore the current item (curr) 
+       in the accumulation process, effectively "skipping" it in terms of 
+       contribution to the total.
 
+      */
+    }
+    const yearsServed = curr.leftOffice - curr.tookOffice;
 
-
+    return acc + yearsServed;
+    
+  }, 0)
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((youngerPresident, olderPresident) => {
+    if (youngerPresident.birthYear > olderPresident.birthYear) {
+      return 1;
+    } else if (youngerPresident.birthYear < olderPresident.birthYear) {
+      return -1
+    } else {
+      return 0
+    }
+  })
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map((newPresident) => {
+    const ageAtInauguration = newPresident.tookOffice - newPresident.birthYear;
+    /*Creating a New Object with ...president:
 
+{ ...president } uses the spread operator to copy all properties from the current president object.
+We then add ageAtInauguration to this new object, creating an updated version without modifying the original president.
 
-
+    */
+    return {
+      ...newPresident,
+      ageAtInauguration: ageAtInauguration,
+    };
+  })
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.filter((president) => president.birthYear > year )
+}
 
-
-
+console.log(getPresidentsBornAfter(presidents, 1890))
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  return presidentsArr.reduce((acc, curr) => {
+    if (curr.party === 'Republican') {
+     return acc + 1
+    } else {
+      return acc;
+    }
+  }, 0)
+}
 
-
-
+console.log(countRepublicanPresidents(presidents));
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {}
-
