@@ -419,25 +419,56 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
+function getNames(presidentsArr) {
+  //presidentsArr.map() goes through each president object in presidentsArr and returns just the name property.
+  //The .map() method takes a callback function as an argument. The callback function here is (president) => { return president.name; }.
+  const PresidentsNames = presidentsArr.map((president) => {
+    return president.name;
+  })
+  return PresidentsNames;
+}
+getNames(presidents);
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const listDemocraticPresidents = presidentsArr.filter((president) => {
+    return president.party === "Democratic";
+  });
+  return listDemocraticPresidents; 
+}
 
+const democraticPresidents = getDemocraticPresidents(presidents);
+console.log(democraticPresidents);
 
+/* function getDemocraticPresidents(presidentsArr) {
+  const listDemocraticPresidents = [];
+  presidentsArr.forEach((president) => {
+    if (president.party === "Democratic") {
+      listDemocraticPresidents.push(president);
+    }
+  });
+  return listDemocraticPresidents; 
+*/
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((accumulator, president) => {
+    if (president.leftOffice !== null) {
+      const yearsInOffice = president.leftOffice - president.tookOffice;
+      return accumulator + yearsInOffice;
+    }
+    return accumulator;
+  }, 0); 
+}
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
 
 
 
