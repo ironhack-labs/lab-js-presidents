@@ -11,7 +11,7 @@ const presidents = [
   {
     id: 2,
     name: "John Quincy Adams",
-    birthYear: 1735,
+    birthYear: 1767,
     deathYear: 1826,
     tookOffice: 1797,
     leftOffice: 1801,
@@ -419,47 +419,120 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const presidentsName = presidentsArr.map((eachElem) => {
+    return eachElem.name;
+  });
 
+  return presidentsName;
+}
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const filteredPresidents = presidentsArr.filter((eachElem) => {
+    if(eachElem.party === "Democratic") {
+      return true;
+    } else {
+      return false;
+    }
+  });
 
-
+  return filteredPresidents;
+}
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const totalPresidentsYear = presidentsArr.reduce((acc, year) => {
+    if(year.leftOffice === null) {
+      return acc;
+    }
 
+    const eachTotalYears = - (year.tookOffice - year.leftOffice);
+    return acc + eachTotalYears;
+  }, 0);
 
+  return totalPresidentsYear;
+}
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const sortedBirthYear = presidentsArr.sort((birth1, birth2) => {
+    if(birth1.birthYear < birth2.birthYear) {
+      return -1;
+    } else if (birth1.birthYear > birth2.birthYear) {
+      return +1;
+    } else {
+      return 0;
+    }
+  });
+
+  return sortedBirthYear;
+}
+
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+
+  const inaugurationAge = presidentsArr.map((eachPresident) => {
+    const calculatedAge = eachPresident.tookOffice - eachPresident.birthYear;
+    eachPresident.ageAtInauguration = calculatedAge;
+
+    return eachPresident;
+  });
+
+  return inaugurationAge;
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  const presidentsFilter = presidentsArr.filter((eachPresident) => {
+    if(eachPresident.birthYear > year) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  return presidentsFilter;
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+  const republicanCount = presidentsArr.reduce((acc, eachPresident) => {
+    if(eachPresident.party === "Republican") {
+     return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+
+  return republicanCount;
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+  const sortedPresidents = presidentsArr.sort((str1, str2) => {
+    return str1.name.localeCompare(str2.name);
+  });
 
+  return sortedPresidents;
+}
+
+console.log(sortPresidentsByName(presidents))
