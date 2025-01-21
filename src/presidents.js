@@ -419,25 +419,50 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  return presidentsArr.map(function(element) {
+    return element.name;
+    
+  });
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democrats = presidentsArr.filter(function(element) {
+    if (element.party === "Democratic") {
+      return true;
+    } else {
+      return false;
+    }
+  }); 
+  return democrats;
+ }  
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((totalYears, president) => {
+    if (president.leftOffice === null) {
+      return totalYears
+    }
+    return totalYears + (president.leftOffice - president.tookOffice);
+  },0);
+}
+
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a,b) => a.birthYear - b.birthYear);
+}
+console.log(sortPresidentsByBirthYear(presidents));
 
 
 
@@ -462,4 +487,3 @@ function countRepublicanPresidents(presidentsArr) {}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {}
-
