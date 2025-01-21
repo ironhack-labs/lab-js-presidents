@@ -412,54 +412,85 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  const presiNames = presidentsArr.map((nameObj) => {
+    return nameObj.name;
+  });
+  return presiNames;
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+  const democParty = presidentsArr.filter(
+    (nameObj) => nameObj.party === "Democratic"
+  );
+  return democParty;
+}
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+function countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce((accu, currValue) => {
+    if (currValue.leftOffice) {
+      let years = currValue.leftOffice - currValue.tookOffice;
+      return accu + years;
+    } else {
+      return accu;
+    }
+  }, 0);
+  return totalYears;
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  const byBirthSorted = presidentsArr.sort(
+    (firstItem, secondItem) => firstItem.birthYear - secondItem.birthYear
+  );
+  return byBirthSorted;
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const updatedArray = presidentsArr.map((presiObj) => {
+    let age = presiObj.tookOffice - presiObj.birthYear;
 
+    presiObj.ageAtInauguration = age;
+    return presiObj;
+  });
 
-
+  return updatedArray;
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-
-
+function getPresidentsBornAfter(presidentsArr, year) {
+  const bornAfter = presidentsArr.filter((nameObj) => nameObj.birthYear > year);
+  return bornAfter;
+}
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
-
-
-
+function countRepublicanPresidents(presidentsArr) {
+  const totalPresidents = presidentsArr.reduce(
+    (accu, currValue) =>
+      currValue.party === "Republican" ? (accu += 1) : accu,
+    0
+  );
+  console.log(totalPresidents);
+  return totalPresidents;
+}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
-
+function sortPresidentsByName(presidentsArr) {
+  const sortedArray = presidentsArr.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+  return sortedArray;
+}
