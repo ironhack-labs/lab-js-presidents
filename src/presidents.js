@@ -419,37 +419,79 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  const nameList = presidentsArr.map(function(presidentDetails) {
+    return presidentDetails.name;
+  });
+  
+  return nameList
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const DemocraticPresidents = presidentsArr.filter(function(presidentDetails) {
+    if (presidentDetails.party === "Democratic") {
+      return true;}
+    else {return false;}
+    })
+    return DemocraticPresidents
+  };
+
+
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
+function  countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr
+  .filter(function(presidentDetails) {
+if (presidentDetails.leftOffice === null) {
+  return false
+}
+else {
+  return true
+}
+  })
+  .reduce(function(acc, currentValue) {
+    return acc + (currentValue.leftOffice - currentValue.tookOffice);}, 0);
+return totalYears
+}
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  const sortedBirthYear = presidentsArr.sort((a,b) => a.birthYear - b.birthYear);
+  return sortedBirthYear
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  const newArr = presidentsArr.map(presidentDetails => {
+    const AgeAtInauguration = presidentDetails.tookOffice - presidentDetails.birthYear;
+     return {
+      ...presidentDetails,
+      AgeAtInauguration: AgeAtInauguration
+     };
+      })
+  return newArr;
+  }
+
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  const latestPresidents = presidentsArr.filter(function(presidentDetails) {
+    return presidentDetails.birthYear > year;
+    }
+  )
+  return latestPresidents;
+  }
+
+  
+
 
 
 
