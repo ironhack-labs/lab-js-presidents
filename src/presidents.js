@@ -419,27 +419,54 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
+function getNames(presidentsArr) {
+  return presidentsArr.map((presName) => {
+    return presName.name;
+  })
+}
+console.log( getNames(presidents) );
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter((presidents) => {
+    if (presidents.party === "Democratic") {
+      return presidents;
+    }
+  })
+}
 
-
+console.log( getDemocraticPresidents(presidents) );
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((totalYears, president) => {
+    if (president.leftOffice !== null) {
+      return totalYears + (president.leftOffice - president.tookOffice);
+    }
+    return totalYears;
+  }, 0);
+}
 
-
+console.log( countYearsInOffice(presidents) );
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    if (a.birthYear > b.birthYear) {
+      return 1;
+    } else if (b.birthYear > a.birthYear) {
+      return -1;
+    } else {
+      return 0;
+    }
+  })
+}
 
-
+console.log( sortPresidentsByBirthYear(presidents) );
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
