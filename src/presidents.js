@@ -419,27 +419,57 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
 
+// step 1. // Step 1: Define a function named 'getNames' that takes an argument 'presidentsArr' (an array of president objects)
+ // Step 2: Use the 'map' method on 'presidentsArr' to create a new array. 'map' iterates over each 'president' object in the 'presidentsArr'
+   // Step 3: For each 'president' object, return the 'name' property. This creates an array of names when 'map' concludes its iteration
 
+function getNames(presidentsArr) { 
+  return presidentsArr.map(president => { 
+    return president.name; //
+  })
+}
+
+console.log(getNames(presidents));
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+// Step 1: Define a function named 'getDemocraticPresidents' that takes a parameter 'presidentsArr'
+ // Step 2: Use the 'filter' method on 'presidentsArr' to create a new array. Filter checks each 'democrat' (president object) to see if the 'party' is "Democratic"
+  // If 'democrat.party' equals "Democratic", the president is included in the new array
+  // Step 3: Call the function 'getDemocraticPresidents' and pass the 'presidents' array to it
+function getDemocraticPresidents(presidentsArr) {
+  return presidentsArr.filter(democrat => democrat.party === "Democratic");
+}
+console.log(getDemocraticPresidents(presidents));
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
+// Step 2: Use 'reduce' to iterate over 'presidentsArr' and accumulate total years in office
+ // Step 3: Check if 'leftOffice' is not null, indicating the president is no longer in office
+      // Step 4: Add the duration (leftOffice - tookOffice) to 'totalYears'
+      // This calculates the number of years the president served
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((totalYears, president) => {
+    if (president.leftOffice !== null){
+      return totalYears + (president.leftOffice - president.tookOffice);
+    }
+  return totalYears;
+}, 0);
+}
+console.log(countYearsInOffice(presidents));
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+// Step 1: Define a function named 'sortPresidentsByBirthYear' that takes a parameter 'presidentsArr'
+// 'presidentsArr' is expected to be an array of president objects
+  // Step 2: Use the 'sort' method on 'presidentsArr' to order presidents by birth year
+  // The comparison function takes two parameters, 'a' and 'b', representing two different president objects
+  // Subtract 'b.birthYear' from 'a.birthYear' to order from oldest to youngest
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
 
-
+console.log(sortPresidentsByBirthYear(presidents));
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
