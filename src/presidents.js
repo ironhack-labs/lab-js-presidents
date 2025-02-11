@@ -419,43 +419,142 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+
+  let nombresPresidentes = presidentsArr.map( (cadaPresidente) => {
+
+      return cadaPresidente.name;
+
+  });
+
+  //console.log(nombresPresidentes);
+
+  return nombresPresidentes;
+
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+
+  let presidentesPartidoDemocrata = presidentsArr.filter ( (cadaPresidente) => {
+
+    return cadaPresidente.party === "Democratic";
+  }); 
+
+  return presidentesPartidoDemocrata;
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+
+  let totalYears = presidentsArr.reduce ( (acumulador, cadaPresidente) => {
+      if (cadaPresidente.leftOffice === null)
+            return acumulador;
+      else {
+            return acumulador += cadaPresidente.leftOffice - cadaPresidente.tookOffice;
+      }    
+
+  },0);
+
+  //console.log(totalYears);
+  return totalYears;
+
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  let ordenPresidentes = presidentsArr.sort ( (president1, president2) => {
+
+        if (president1.birthYear > president2.birthYear) {  
+          return 1;
+        }
+        else if (president2.birthYear > president1.birthYear) {
+
+          return -1;
+        }
+        else 
+          return 0;
+
+  });
+
+  //console.log(ordenPresidentes);
+  return ordenPresidentes;
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+
+  let edadPresidentePosesion = presidentsArr.map ( (cadaPresidente) => {
+
+        // Añadimos los objetos al nuevo array
+        // Cambiamos el TookOffice porque es un string y necesitamos un número
+        let presidentePosesion = cadaPresidente;
+        //let nuevoTookOffice = cadaPresidente.tookOffice.slice(0,4);
+
+        //console.log(nuevoTookOffice);
+
+        // Creamos la nueva propiedad "AgeAtInauguration"
+        presidentePosesion.ageAtInauguration = cadaPresidente.tookOffice - cadaPresidente.birthYear
+
+        return presidentePosesion;
+
+  });
+
+  console.log(edadPresidentePosesion);
+  return edadPresidentePosesion;
+
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+
+  let presidentesNacidos = presidentsArr.filter ( (cadaPresidente) => {
+      if (cadaPresidente.birthYear > year) {
+        return true;
+      }
+      else 
+        return false;
+  });
+
+  return presidentesNacidos;
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+
+  let totalRepublicanos = presidentsArr.reduce( (acumulador, cadaPresidente) => {
+
+        //console.log(cadaPresidente.party);
+        if (cadaPresidente.party === null)
+          return acumulador;
+
+        else if(cadaPresidente.party === "Republican") 
+          return acumulador += 1;
+  },0); 
+
+  //console.log(totalRepublicanos);
+  return totalRepublicanos;
+
+}
 
 
 
