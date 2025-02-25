@@ -419,27 +419,88 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const presidentsName = presidentsArr.map((onePresident) => {
+    return onePresident.name;
+  })
+  return presidentsName;
+}
+
+// oder nur das hier unter function: 
+// return presidentsArr.map(president => president.name);
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const onlyDemocratic = presidentsArr.filter((onePresident) => {
+    if (onePresident.party === "Democratic") {
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
+  return onlyDemocratic;
+}
 
+// oder nach der function nur diese Zeile:
+// return presidentsArr.filter(onePresident => onePresident.party === "Democratic");
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((total, president) => {
+    
+    if (president.leftOffice === null) {
+      return total;
+    }
+  
+    return total + (president.leftOffice - president.tookOffice);
+  }, 0);
+}
 
 
+/* 
+Die reduce() Methode:
+reduce() verarbeitet jedes Element eines Arrays und "reduziert" es auf einen einzelnen Wert
+Sie nimmt zwei Hauptargumente:
+Eine Callback-Funktion
+Einen Startwert (hier: 0)
+Die Parameter der Callback-Funktion:
+
+total: Der akkumulierte Wert (startet bei 0)
+president: Das aktuelle Präsidenten-Objekt
+
+Die return Statements:
+Das erste return total im if-Block:
+Wird ausgeführt, wenn ein Präsident noch im Amt ist (leftOffice === null)
+Gibt einfach den bisherigen total zurück ohne Änderungen
+Das zweite return total + (president.leftOffice - president.tookOffice):
+Berechnet die Amtszeit des aktuellen Präsidenten
+Addiert diese zur Gesamtsumme
+Die mehreren return Statements sind notwendig, weil:
+Wir bei jedem Durchlauf eine neue Summe zurückgeben müssen
+Wir unterschiedliche Werte zurückgeben müssen, je nachdem ob der Präsident noch im Amt ist oder nicht
+*/ 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  const sortedBirthdays = presidentsArr.sort((currentNum, nextNum) => {
+    if (currentNum.birthYear > nextNum.birthYear) {
+      return 1;
+    }
+    else {
+      return -1;
+    }
+  })
+  return sortedBirthdays;
+}
 
-
+console.log((sortPresidentsByBirthYear(presidents)))
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
