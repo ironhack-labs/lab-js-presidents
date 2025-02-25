@@ -1,4 +1,4 @@
-xdescribe("BONUS", () => {
+describe("BONUS", () => {
   // Bonus: Iteration 5
   describe("Bonus: Iteration 5 | Age at Inauguration", () => {
     it("should take 1 argument (presidents)", () => {
@@ -102,7 +102,7 @@ xdescribe("BONUS", () => {
   });
 
   // Bonus: Iteration 6
-  describe("Bonus: Iteration 6 | Presidents Born After", () => {
+  xdescribe("Bonus: Iteration 6 | Presidents Born After", () => {
     it("should take 2 arguments (presidents, year)", () => {
       expect(getPresidentsBornAfter).toBeDefined();
       expect(getPresidentsBornAfter.length).toEqual(2);
@@ -159,7 +159,7 @@ xdescribe("BONUS", () => {
 
 
   // Bonus: Iteration 7
-  describe("Bonus: Iteration 7 | Count Republican Presidents", () => {
+  xdescribe("Bonus: Iteration 7 | Count Republican Presidents", () => {
     it("should take 1 argument (presidents)", () => {
       expect(typeof countRepublicanPresidents).toEqual("function");
       expect(countRepublicanPresidents.length).toEqual(1);
@@ -213,7 +213,7 @@ xdescribe("BONUS", () => {
 
 
   // Bonus: Iteration 8
-  describe("Bonus: Iteration 8 | Sort Presidents by Name", () => {
+  xdescribe("Bonus: Iteration 8 | Sort Presidents by Name", () => {
     it("should take 1 argument (presidents)", () => {
       expect(sortPresidentsByName).toBeDefined();
       expect(sortPresidentsByName.length).toEqual(1);
