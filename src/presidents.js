@@ -419,25 +419,46 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) { // map() goes through each element presidents extracts name property.
+  return presidentsArr.map(president => president.name);// return only the names of presidents.
+ }
+console.log(getNames(presidents));
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresidents = presidentsArr.filter((president) => {
+    return president.party === "Democratic";
+  });
 
-
+  return democraticPresidents;
+}
+console.log(getDemocraticPresidents(presidents));
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce((accumulator, president) => {
+    if (president.leftOffice === null) { // Skip presidents who are still in office (leftOffice is null)
+      return accumulator;
+    }
 
+  const yearsInOffice = president.leftOffice - president.tookOffice; // Calculate years in office
 
+    
+    return accumulator + yearsInOffice; // Add to accumulator
+  }, 0); // Initial value of accumulator is 0
 
+  return totalYears;
+}
+  console.log(countYearsInOffice(presidents)); // Expected output: 232 (based on full dataset)
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    return a.birthYear - b.birthYear; // Sort in ascending order (oldest to youngest)
+  });
+}
+
 
 
 
