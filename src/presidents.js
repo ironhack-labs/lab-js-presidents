@@ -419,28 +419,61 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+//correction
+const presidentsName = presidentsArr.map(function (getNames) {
+  return presidentsArr.name;
+}
+)}
+console.log( getNames(presidents) );
 
+
+  //1st try
+/*const presidentsName = presidents.map(function(getNames) {
+  return presidents.name;
+})};
+console.log( getNames(presidents) );
+
+-------
+//note to myself: I didnt use the right parameter
+-------
+*/
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
+const demParty = presidentsArr.filter(function (presidents) {
+  return presidents.party === "Democratic";
+});}
+console.log(getDemocraticPresidents(presidents));
 
-
-
+//needed help
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce(function(totalYears, president) {
+    if (president.leftOffice && president.tookOffice) {
+      return totalYears + (president.leftOffice - president.tookOffice);
+    } else {
+      return totalYears; // Skip if leftOffice is null (e.g. current president)
+    }
+  }, 0);
+}
 
+console.log(office);
 
+//mistakes I keep making is naming wrong, or using wrong parameter names
 
-
+//not finished alone, needed help
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort(function (a, b){
+    return a.birthYear - b.birthYear;
+  });
+}
 
-
-
+console.log(sortPresidentsByBirthYear(presidents));
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {}
