@@ -419,8 +419,14 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  return presidentsArr.map(president => president.name);
+}
 
+// Example usage:
+const presidentNames = getNames(presidents);
+console.log(presidentNames);
+// Expected output: An array of president names
 
 
 
