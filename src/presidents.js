@@ -449,7 +449,7 @@ function countYearsInOffice(presidentsArr) {
       accumulatedYears += (president.leftOffice - president.tookOffice);
     }
     return accumulatedYears;    
-  });
+  }, 0);
   return totalYears;
 }
 
