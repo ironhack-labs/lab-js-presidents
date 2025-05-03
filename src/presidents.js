@@ -419,43 +419,80 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  const allNames = presidentsArr.map((president) => {
+    return president.name
+  })
+  return allNames
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidents) {
+  return presidents.filter(function(president) {
+    return president.party === "Democratic";
+  });
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  
+  let yearsInOffice = presidentsArr.reduce((years, president) => {
+    if(president.leftOffice === null) {
+      return years;
+    }
+    
+    let officeYears = president.leftOffice - president.tookOffice;
+    return years + officeYears;
+  }, 0);
+  return yearsInOffice;
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a,b) => a.birthYear - b.birthYear);
+}
+
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function calculateAgeAtInauguration(presidents) {
+  return presidents.map(president => {
+    const ageAtInauguration = president.inaugurationYear - president.birthYear;
+    return {
+      ... president, ageAtInauguration 
+    };
+  });
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function filterPresidentsBornAfter(presidents, year) {}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+const countRepublicanPresidents = (presidents) => {
+  return presidents.reduce((count, president) => {
+    if (president.party === 'Republican') {
+      return count + 1;  
+    }
+    return count;  
+  }, 0);  
+};
 
 
 
