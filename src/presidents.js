@@ -477,7 +477,7 @@ function getAgeAtInauguration(presidentsArr) {
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
-  
+  return presidentsArr.filter(president => president.birthYear > year);
 }
 
 
@@ -485,14 +485,30 @@ function getPresidentsBornAfter(presidentsArr, year) {
 
 // Bonus: Iteration 7 | Count Republican Presidents
 function countRepublicanPresidents(presidentsArr) {
-
+  return presidentsArr.reduce((counter, president) => {
+    if (president.party != null) {
+      if (president.party.includes("Republican")) {
+        counter++;
+      }
+    } 
+    return counter;
+  }, 0);
 }
+
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {
-
+  return presidentsArr.sort((president1, president2) => {
+    if (president1.name < president2.name) {
+      return -1;
+    }
+    if (president1.name > president2.name) {
+      return 1;
+    }
+    return 0;
+  });
 }
 
