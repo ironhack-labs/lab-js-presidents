@@ -415,51 +415,141 @@ const presidents = [
   }
 ];
 
+// ===== JAVASCRIPT ARRAY METHODS EXAMPLES =====
 
+// MAP EXAMPLE - Creates a new array with the results of calling a function on every element
+// Example: Extract a specific property from each object in an array
+/*
+const people = [
+  { name: "Alex", age: 30 },
+  { name: "Sarah", age: 25 },
+  { name: "Michael", age: 40 }
+];
+
+const names = people.map(person => person.name);
+console.log(names); // ["Alex", "Sarah", "Michael"]
+*/
+
+// FILTER EXAMPLE - Creates a new array with elements that pass the test
+// Example: Get all objects that match a specific condition
+/*
+const people = [
+  { name: "Alex", age: 30, role: "developer" },
+  { name: "Sarah", age: 25, role: "designer" },
+  { name: "Michael", age: 40, role: "developer" }
+];
+
+const developers = people.filter(person => person.role === "developer");
+console.log(developers); 
+// [{ name: "Alex", age: 30, role: "developer" }, { name: "Michael", age: 40, role: "developer" }]
+*/
+
+// REDUCE EXAMPLE - Reduces an array to a single value by executing a callback function
+// Example: Sum all values in an array of objects
+/*
+const purchases = [
+  { item: "Laptop", price: 1000 },
+  { item: "Phone", price: 500 },
+  { item: "Headphones", price: 100 }
+];
+
+const totalSpent = purchases.reduce((total, purchase) => total + purchase.price, 0);
+console.log(totalSpent); // 1600
+*/
+
+// SORT EXAMPLE - Sorts the elements of an array in place
+// Example: Sort objects by a numeric property (ascending)
+/*
+const people = [
+  { name: "Alex", birthYear: 1992 },
+  { name: "Sarah", birthYear: 1985 },
+  { name: "Michael", birthYear: 1978 }
+];
+
+// Sort by birth year (oldest to youngest)
+const sortedByBirthYear = people.sort((a, b) => a.birthYear - b.birthYear);
+console.log(sortedByBirthYear);
+// Result: Sorted from oldest (lowest birth year) to youngest (highest birth year)
+*/
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
+function getNames(presidentsArr) {
+  const names = presidentsArr.map(theDude => theDude.name);
+  return names;
+}
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
+function getDemocraticPresidents(presidentsArr) {
+  const democrats = presidentsArr.filter(democrats => democrats.party == "Democratic");
+  return democrats;
+}
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+
+// const totalSpent = purchases.reduce((total, purchase) => total + purchase.price, 0);
+// console.log(totalSpent); // 1600
+function  countYearsInOffice(presidentsArr) {
+  const totalYears = presidentsArr.reduce((accumulator, president ) => {
+    if(president.leftOffice == null){
+      return accumulator; // return it unchanged
+    }
+
+    const yearsServed = president.leftOffice - president.tookOffice;
+    return accumulator + yearsServed;
+  }, 0)// start with 0
+  return totalYears;
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  const sortedByBirthYear = presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+  return sortedByBirthYear; 
+}
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
-
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map(president => {
+    // Create a copy of the president object
+    const updatedPresident = { ...president };
+    
+    // Calculate age at inauguration
+    updatedPresident.ageAtInauguration = president.tookOffice - president.birthYear;
+    
+    return updatedPresident;
+  });
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.filter(president => president.birthYear > year);
+}
 
-
-
-
-// Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
-
-
-
+// Bonus: Iteration 7 | Count Republican Presidents - `reduce()`
+function countRepublicanPresidents(presidentsArr) {
+  return presidentsArr.reduce((count, president) => {
+    // If the president's party is Republican, increment the counter
+    if (president.party === "Republican") {
+      return count + 1;
+    }
+    // Otherwise, return the count unchanged
+    return count;
+  }, 0); // Start counting from 0
+}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
-
+function sortPresidentsByName(presidentsArr) {
+  // Create a copy of the array to avoid modifying the original
+  const sortedPresidents = [...presidentsArr];
+  
+  // Sort the array alphabetically by name
+  return sortedPresidents.sort((a, b) => a.name.localeCompare(b.name));
+}
