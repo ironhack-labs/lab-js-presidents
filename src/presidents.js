@@ -419,25 +419,42 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+  let presidents = presidentsArr.map(({name}) => name)
+  return presidents
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+  let democrats = presidentsArr.filter(president => president.party === "Democratic");
+  return democrats
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
+  let mandate = presidentsArr.reduce((total, president) => {
+    if (president.leftOffice !== null) {
+      total += president.leftOffice - president.tookOffice
+    } 
+    return total
+  }, 0) 
+  return mandate
+}
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  let olderToYounger = presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+  return olderToYounger;
+}
 
 
 
