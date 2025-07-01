@@ -419,31 +419,81 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+    let results = [];
 
+    presidentsArr.map((president) => {
+        results.push(president.name);
+    });
+    return results;
+  };
+
+console.log(getNames(presidents));
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
 
+  let results = [];
+presidentsArr.filter(function(isDemocrat) {
+  if (isDemocrat.party === "Democratic") {
+    results.push(isDemocrat);
+  }
+});
+return results;
+}
+console.log(getDemocraticPresidents(presidents));
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function  countYearsInOffice(presidentsArr) {
 
+  return presidentsArr.reduce((totalYears, president) => {
+    let yearsInOffice = 0;
+    if (president.leftOffice) {
+      yearsInOffice = president.leftOffice - president.tookOffice;
+    } else if (president.tookOffice && !president.leftOffice) {
+      yearsInOffice = new Date().getFullYear() - president.tookOffice; // Calculate current years in office
+    }
+    return totalYears + yearsInOffice;
+  }, 0);
+}
+console.log(countYearsInOffice(presidents));
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => {
+    return a.birthYear - b.birthYear;
+});
+}
+console.log(sortPresidentsByBirthYear(presidents));
 
 
 
+/* Bonus: Iteration 5 | Age at Inauguration - `map()` */
+function getAgeAtInauguration(presidentsArr) {
+let results = [];
 
-// Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+presidentsArr.map((yearOfInaug) => {
+  let ageAtInauguration = yearOfInaug.tookOffice - yearOfInaug.birthYear;
+  results.push({
+    id: yearOfInaug.id,
+    birthYear: yearOfInaug.birthYear,
+    deathYear: yearOfInaug.deathYear,
+    tookOffice: yearOfInaug.tookOffice,
+    leftOffice: yearOfInaug.leftOffice,
+    party: yearOfInaug.party,
+    ageAtInauguration: ageAtInauguration,
+  });
+});
+return results;
+}
+
+console.log(getAgeAtInauguration(presidents));
 
 
 
