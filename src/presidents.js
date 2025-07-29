@@ -412,54 +412,74 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidents) {
+  let presidentsNames = presidents.map((eachElement) => {
+    let presidentName = eachElement.name;
+    return presidentName;
+  });
+  return presidentsNames;
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidents) {
+  let presidentsParty = presidents.filter((eachElement) => {
+    let presidentDemocParty = eachElement.party;
+    if (presidentDemocParty === "Democratic") {
+      return true;
+    }
+  });
+  return presidentsParty;
+}
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidents) {
+  let totalYearsServed = presidents.reduce((acc, currentPresident) => {
+    let yearsServedPresident =
+      currentPresident.leftOffice - currentPresident.tookOffice;
+    return acc + yearsServedPresident;
+  }, 0);
 
+  return totalYearsServed;
+}
 
-
+/*function temp(presidents) {
+  let totalYearServed = 0;
+  for (let i = 0; i < presidents.length; i++) {
+    let currentPresident = presidents[i];
+    let yearsServedPresident =
+      currentPresident.leftOffice - currentPresident.tookOffice;
+    totalYearServed = totalYearServed + yearsServedPresident;
+  }
+  return totalYearServed;
+}*/
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidents) {
+  let presiBirthYear = presidents.sort((president2, president1) => {
+    if (president2.birthYear > president1.birthYear) {
+      return 1;
+    } else if (president2.birthYear < president1.birthYear) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  console.log (presiBirthYear)
+return presiBirthYear
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
-
+function getAgeAtInauguration(presidents) {}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-
-
+function getPresidentsBornAfter(presidents, year) {}
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
-
-
-
+function countRepublicanPresidents(presidents) {}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
-
+function sortPresidentsByName(presidents) {}
