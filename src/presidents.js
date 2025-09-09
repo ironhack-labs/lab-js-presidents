@@ -412,54 +412,49 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  const allPresidents = presidentsArr.map((president) => president.name);
+  console.log(allPresidents);
+  return allPresidents;
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresidents = presidentsArr.filter(function (president) {
+    return president.party === "Democratic";
+  });
+  console.log(democraticPresidents);
+  return democraticPresidents;
+}
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+function countYearsInOffice(presidentsArr) {
+  const yearsInOffice = presidentsArr.reduce(function (acc, president) {
+    if (president.leftOffice) {
+      return acc + president.leftOffice - president.tookOffice;
+    } else {
+      return acc;
+    }
+  }, 0);
+  console.log(yearsInOffice);
+  return yearsInOffice;
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
 function sortPresidentsByBirthYear(presidentsArr) {}
 
-
-
-
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
 function getAgeAtInauguration(presidentsArr) {}
-
-
-
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {}
 
-
-
-
 // Bonus: Iteration 7 | Count Republican Presidents
 function countRepublicanPresidents(presidentsArr) {}
 
-
-
-
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {}
-
