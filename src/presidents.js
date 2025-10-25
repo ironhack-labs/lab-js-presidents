@@ -438,7 +438,7 @@ function getDemocraticPresidents(presidentsArr) {
 
 // Iteration 3 | Count Years in Office - reduce()
 function  countYearsInOffice(presidentsArr) {
-  return presidentsArr.reduce((years, president)=>{
+  return presidentsArr.reduce((years, president) => {
     years += (president.leftOffice === null)? 0: (president.leftOffice - president.tookOffice);
     return years;
   }, 0);
@@ -448,7 +448,17 @@ function  countYearsInOffice(presidentsArr) {
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((p1, p2) => {
+    if (p1.birthYear > p2.birthYear) {
+      return 1;
+    } else if (p1.birthYear < p2.birthYear) {
+      return -1;
+    } else if (p1.birthYear === p2.birthYear){
+      return 0
+    }
+  });
+}
 
 
 
