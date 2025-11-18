@@ -419,26 +419,67 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidents) {
+  return presidents.map(president => president.name);
+}
 
+// Resultado: Iteration 1
+console.log("*****************************************************")
+console.log("*** Iteration 1 | Names of All Presidents - map() ***")
+console.log("*****************************************************")
+console.log( getNames(presidents) );
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidents) {
+  return presidents.filter(president => president.party === "Democratic");
+}
+// -----------------------------------------------------------------
 
+// Paso 1: Filtrar el array original
+const democratsObjects = getDemocraticPresidents(presidents);
 
+// Paso 2: Usar la función getNames en el array filtrado
+const democraticNamesList = getNames(democratsObjects);
+
+// Resultado: Iteration 2
+// Imprimir el resultado (lista de nombres limpios)
+console.log("*****************************************************")
+console.log("**  Iteration 2 | Democratic Presidents - filter() **")
+console.log("*****************************************************")
+console.log(democraticNamesList);
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+function countYearsInOffice(presidents) {
+  return presidents.reduce((totalYears, president) => {
+    // Si leftOffice es null, se salta.
+    if (president.leftOffice !== null) {
+      const yearsServed = president.leftOffice - president.tookOffice;
+      return totalYears + yearsServed;
+    }
+    return totalYears;
+  }, 0);
+}
+console.log("*****************************************************")
+console.log("**  Iteration 3 | Count Years in Office - reduce() **")
+console.log("*****************************************************")
+console.log( countYearsInOffice(presidents) );
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidents) {
+  const presidentsCopy = [...presidents];
+  return presidentsCopy.sort((a, b) => a.birthYear - b.birthYear);
+}
 
+// ----------------------------------------------------
+// EJECUCIÓN Y SALIDA (console.log)
+// ----------------------------------------------------
+console.log("*************************************************************")
+console.log("**   Iteration 4 | Sort Presidents by Birth Year - `sort() **")
+console.log("*************************************************************")
+console.log( getNames(presidents) );
 
 
 
