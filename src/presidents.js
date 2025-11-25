@@ -517,10 +517,11 @@ function sortPresidentsByName(presidentsArr) {
     if (a.name > b.name) {
       return 1;
     }
-      else if (a.name < b.name) {
+    else if (a.name < b.name) {
       return -1;
-    }
+    } else {
       return 0;
+    }
   }) 
 }
 
