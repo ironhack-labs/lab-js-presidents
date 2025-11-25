@@ -412,54 +412,98 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
+function getNames(presidentsArr) {
+  const presidentNames = presidentsArr.map((currentPresident) => {
+    return currentPresident.name;
+  });
+  return presidentNames;
+}
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+  const filteredArray = presidentsArr.filter((currentPresident) => {
+    if (currentPresident.party === "Democratic") {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return filteredArray;
+}
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+function countYearsInOffice(presidentsArr) {
+  const totalYearsInOffice = presidentsArr.reduce((acc, currentPresident) => {
+    if (currentPresident.leftOffice) {
+      return acc + (currentPresident.leftOffice - currentPresident.tookOffice);
+    } else {
+      return acc;
+    }
+  }, 0);
+  return totalYearsInOffice;
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((currentPresident, nextPresident) => {
+    if (currentPresident.birthYear > nextPresident.birthYear) {
+      return 1;
+    } else if (currentPresident.birthYear < nextPresident.birthYear) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
-
+function getAgeAtInauguration(presidentsArr) {
+  const inaugurationObject = presidentsArr.map((currentPresident) => {
+    const inaugurationyear =
+      currentPresident.tookOffice - currentPresident.birthYear;
+    return { ageAtInauguration: inaugurationyear };
+  });
+  return inaugurationObject;
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
-
-
-
+function getPresidentsBornAfter(presidentsArr, year) {
+  const presidentsBornAfterArray = presidentsArr.filter((currentPresident) => {
+    if (currentPresident.birthYear > year) {
+      return true;
+    }
+  });
+  return presidentsBornAfterArray;
+}
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
-
-
-
+function countRepublicanPresidents(presidentsArr) {
+  const republicanPresidentsArray = presidentsArr.reduce(
+    (acc, currentPresident) => {
+      if (currentPresident.party === "Republican") {
+        return acc + 1;
+      } else {
+        return acc;
+      }
+    },
+    0
+  );
+  return republicanPresidentsArray;
+}
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
-
+function sortPresidentsByName(presidentsArr) {
+  return presidentsArr.sort((currentPresident, nextPresident) => {
+    if (currentPresident.name > nextPresident.name) {
+      return 1
+    } else if (currentPresident.name < nextPresident.name) {
+      return -1
+    } else {
+      return 0
+    }
+  });
+}
