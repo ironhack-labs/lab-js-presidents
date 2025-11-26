@@ -412,54 +412,56 @@ const presidents = [
     tookOffice: 2021,
     leftOffice: null,
     party: "Democratic",
-  }
+  },
 ];
 
-
-
-
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
-
-
+function getNames(presidentsArr) {
+  const presName = presidentsArr.map((namePres) => {
+    return namePres.name;
+  });
+  return presName;
+}
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
-
-
-
+function getDemocraticPresidents(presidentsArr) {
+  const demPres = presidentsArr.filter((side) => side.party === "Democratic");
+  return demPres;
+}
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
-
-
-
+function countYearsInOffice(presidentsArr) {
+  const totalYearsInOffice = presidentsArr.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
+  const officeYears = presidentsArr.reduce((acc, Years) => {
+    if (Years.leftOffice) {
+      return acc + (Years.leftOffice - Years.tookOffice);
+    } else {
+      return acc;
+    }
+  }, 0);
+  return officeYears;
+}
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
-
-
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
-
-
-
+function getAgeAtInauguration(presidentsArr) {
+  const ageAtInauguration = presidentsArr.map((findAge) => {
+    const officeAge = findAge.tookOffice - findAge.birthYear;
+    return officeAge;
+  });
+  return presidentsArrageAtInauguration;
+}
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {}
 
-
-
-
 // Bonus: Iteration 7 | Count Republican Presidents
 function countRepublicanPresidents(presidentsArr) {}
 
-
-
-
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {}
-
