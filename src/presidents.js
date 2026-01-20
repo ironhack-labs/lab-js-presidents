@@ -419,47 +419,98 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
+function getNames(presidentsArr) {
+
+  const names = presidentsArr.map (president => president.name); {
+    return names;
+  };
+}
 
 
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidentsArr) {
+
+  const democraticPresidents = presidentsArr.filter (president => president.party === "Democratic");
+  return democraticPresidents
+}
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
 
+function  countYearsInOffice(presidentsArr) {
+      const totalYears = presidentsArr.reduce ((acc,presidents) => {
+        let years = presidents.leftOffice - presidents.tookOffice;
+         if (presidents.leftOffice === null) {
+          years = 0;
+        }
+        return acc + years;
+
+      },0);
+
+      return totalYears
+    
+  
+
+}
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidentsArr) {
+
+  return presidentsArr.sort((a, b) => a.birthYear - b.birthYear);
+}
 
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidentsArr) {
+  return presidentsArr.map(president => {
+    const age = president.tookOffice - president.birthYear;
+    return {
+      ...president,               
+      ageAtInauguration: age    
+    };
+  });
+}
 
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
+function getPresidentsBornAfter(presidentsArr, year) {
+
+  return presidentsArr.filter(president => president.birthYear > year);
+}
 
 
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidentsArr) {
+
+  return presidentsArr.reduce((acc, president) => {
+    if (president.party === "Republican") {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+}
 
 
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+function sortPresidentsByName(presidentsArr) {
+
+  return presidentsArr.sort ((a,b)=> a.name.localeCompare (b.name));
+  
+
+}
+console.log( sortPresidentsByName(presidents) );
 
