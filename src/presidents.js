@@ -419,47 +419,92 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
 
-
+function getNames(presidentsArr) {
+  const names = presidentsArr.map(presisNames => presisNames.name)
+  return names
+}
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
 
-
+function getDemocraticPresidents(presidentsArr) {
+  const democraticPresis = presidentsArr.filter((demoPresis) => demoPresis.party === "Democratic")
+  return democraticPresis
+}
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
 
-
+function countYearsInOffice(presidentsArr) {
+  const filterPresisWithNull = presidentsArr.reduce((acc, curr) => {
+    if (curr.leftOffice !== null) {
+      return acc + (curr.leftOffice - curr.tookOffice)
+    }
+    return acc
+  }, 0)
+  return filterPresisWithNull
+}
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
 
-
+function sortPresidentsByBirthYear(presidentsArr) {
+  const PresidentsByBirthYear = presidentsArr.sort((presiOne, presiTwo) => presiOne.birthYear - presiTwo.birthYear)
+  return PresidentsByBirthYear
+}
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
 
+function getAgeAtInauguration(presidentsArr) {
+  const ageTotalWorked = presidentsArr.map(president => ({
+    ...president, // copio todos las propiedades del objeto presis
+    ageAtInauguration: president.tookOffice - president.birthYear, // añado la propiedad ageAtInauguration
+  })
+  )
+  return ageTotalWorked
+}
 
 
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) {}
 
-
+function getPresidentsBornAfter(presidentsArr, year) {
+  const presisBornAfter = presidentsArr.filter(president => president.birthYear > year)
+  return presisBornAfter
+}
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
 
-
+function countRepublicanPresidents(presidentsArr) {
+  const republicanPresis = presidentsArr.reduce((acc, curr) =>{
+      if(curr.party === "Republican"){
+        return acc + 1
+      }
+      return acc
+  },0)
+  return republicanPresis
+}
 
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) {}
+
+function sortPresidentsByName(presidentsArr) { 
+  const presisByName = presidentsArr.sort((presiOne, presiTwo) => {
+    const firstName = presiOne.name.toUpperCase()
+    const secondName = presiTwo.name.toUpperCase()
+
+    if(firstName > secondName){
+      return 1  //  firstName es mayor y va depues
+    } else if (firstName < secondName){
+      return -1 // first name es menor y va antes
+    } else {
+      return 0 // si firstName y secondName son iguales
+    }
+
+  })
+  return presisByName
+}
 
